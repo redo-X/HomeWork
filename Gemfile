@@ -33,6 +33,8 @@ gem 'devise-bootstrap-views'
 
 gem 'i18n', '~> 0.7.0'
 
+gem 'rolify'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
