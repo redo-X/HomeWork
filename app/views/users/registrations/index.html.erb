@@ -1,0 +1,23 @@
+
+<h1>Benutzer verwalten</h1>
+
+<table class="table table-striped">
+
+    <tr>
+      <th>E-Mail Adresse</th>
+      <th>Vorname</th>
+      <th>Nachname</th>
+      <th>...</th>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.email, user_path(user) %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td></td>
+      </tr>
+    <% end %>
+</table>
+
+<%= link_to 'Neu', new_user_path %>

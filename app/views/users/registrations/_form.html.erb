@@ -1,0 +1,57 @@
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    <% if @user.new_record? %>
+        <h4>Benutzer anlegen</h4>
+    <% else %>
+        <h4>Benutzer bearbeiten</h4>
+    <% end %>
+
+  </div>
+
+  <div class="panel-body">
+    <%= form_for @user do |f| %>
+
+        <% if @user.new_record? == false and @user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@user.errors.count, "error") %>:</h2>
+
+              <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, class: "form-control" %>
+
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password %> <i>(<%= t('.leaveBlankIfUnchanged', :default => "leave blank if you don't want to change it") %>)</i><br />
+          <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, class: "form-control"  %>
+        </div>
+
+        <% if @user.new_record? %>
+          <%= f.submit t('.sign_up', :default => "Anlegen"), class: "btn btn-primary" %>
+        <% else %>
+            <%= f.submit t('.update', :default => "Aktualisieren"), class: "btn btn-primary" %>
+        <% end %>
+    <% end %>
+  </div>
+</div>
+

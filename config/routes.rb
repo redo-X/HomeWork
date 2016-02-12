@@ -1,7 +1,27 @@
 Rails.application.routes.draw do
-  devise_for :users
+
   get 'welcome/index'
   root :to => 'welcome#index'
+
+
+  # REROUTE DEVISE
+  devise_for :users, except: :registrations
+  devise_for :users, :only => [:registrations]
+  as :user do
+    get 'users' => 'users/registrations#index', :as => :users
+    get 'users/new' => 'users/registrations#new', :as => :new_user
+    post 'users' => 'users/registrations#create'
+    get 'users/:id' => 'users/registrations#edit', :as => :user
+
+    patch 'users/:id' => 'users/registrations#update'
+    put 'users/:id' => 'users/registrations#update'
+    delete 'users/:id' => 'users/registrations#destroy'
+  end
+
+
+
+
+  #get 'products/:id' => 'catalog#view'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

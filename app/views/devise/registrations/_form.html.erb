@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Benutzer bearbeiten</h4>
+  </div>
+  <div class="panel-body">
+    <%= form_for @user do |f| %>
+
+        <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+              <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it") %>)</i><br />
+          <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, class: "form-control"  %>
+        </div>
+        <div class="form-group">
+          <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes', :default => 'we need your current password to confirm your changes') %>)</i>
+          <%= f.password_field :current_password, class: "form-control" %>
+        </div>
+
+        <%= f.submit t('.update', :default => "Update"), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to t('.back', :default => 'Back'), :back %>
