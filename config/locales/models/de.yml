@@ -4,11 +4,13 @@ de:
         article: "Artikel"
         user: "Benutzer"
         production_order: "Produktionsaufträge"
+        article_group: "Artikelgruppe"
       attributes:
         article:
           code: "Nummer"
           name: "Name"
           version: "Version"
+          article_group: "Artikelgruppe"
         user:
           current_sign_in_at: "Angemeldet am"
           email: "E-Mail"
@@ -25,3 +27,6 @@ de:
           release_date: "Freigabedatum"
           due_date: "Fälligkeitsdatum"
           isCompleted: "Ist abgeschlossen"
+        article_group:
+          code: "Nummer"
+          name: "Bezeichnung"
