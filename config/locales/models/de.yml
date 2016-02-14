@@ -1,0 +1,18 @@
+de:
+  activerecord:
+      models:
+        article: "Artikel"
+        user: "Benutzer"
+      attributes:
+        article:
+          code: "Nummer"
+          name: "Name"
+          version: "Version"
+        user:
+          current_sign_in_at: "Angemeldet am"
+          email: "E-Mail"
+          password: "Passwort"
+          first_name: "Vorname"
+          last_name: "Nachname"
+          last_sign_in_at: "Zuletzt angemeldet am"
+          remember_me: "Angemeldet bleiben"

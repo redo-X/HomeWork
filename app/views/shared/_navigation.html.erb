@@ -8,8 +8,17 @@
     <a class="navbar-brand" href="#">HomeWork</a>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Benutzer", users_path   %></li>
-        <li><%= link_to "Link2", "/path2"  %></li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Verwalten <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to User.model_name.human.titleize, users_path   %></li>
+            <li><%= link_to Article.model_name.human.titleize, articles_path   %></li>
+          </ul>
+        </li>
+
+
+
         <%= render "shared/user" %>
       </ul>
     </div>

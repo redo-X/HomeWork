@@ -33,6 +33,7 @@ gem 'devise-bootstrap-views'
 
 gem 'i18n', '~> 0.7.0'
 
+
 gem 'rolify'
 gem 'cancan'
 

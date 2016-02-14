@@ -9,6 +9,9 @@ de:
       pages: "Seiten"
   helpers:
     actions: "Aktionen"
+    models:
+      created_at: "Erstellt am"
+      id: "ID"
     links:
       back: "Zurück"
       cancel: "Abbrechen"
