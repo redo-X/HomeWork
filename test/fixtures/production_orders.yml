@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 1
+  description: MyString
+  quantity: 1
+  pending_quantity: 1
+  release_date: 2016-02-14
+  due_date: 2016-02-14
+  isCompleted: false
+
+two:
+  number: 1
+  description: MyString
+  quantity: 1
+  pending_quantity: 1
+  release_date: 2016-02-14
+  due_date: 2016-02-14
+  isCompleted: false

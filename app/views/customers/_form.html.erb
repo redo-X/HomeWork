@@ -1,0 +1,109 @@
+<%= form_for @customer, :html => {:class => "form-horizontal customer"} do |f| %>
+
+    <% if @customer.errors.any? %>
+        <div id="error_expl" class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from
+              being saved:</h3>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <% @customer.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :ident, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-2">
+        <%= f.text_field :code, :class => 'form-control', :placeholder => 'Nummer' %>
+      </div>
+
+      <div class="col-lg-8">
+        <%= f.text_field :name1, :class => 'form-control', :placeholder => 'Primärname' %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <%= f.text_field :name2, :class => 'form-control', :placeholder => 'Sekundärname' %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label :contact, :class => 'control-label col-lg-2' %>
+
+      <div class="col-lg-5">
+        <div class="input-group">
+          <span class="input-group-addon" id="customer_phone_addon"><span class="glyphicon glyphicon-earphone" ></span></span>
+          <%= f.text_field :phone,
+                           :class => 'form-control',
+                           :placeholder => 'Telefon',
+                           'aria-describedby'=>'customer_phone_addon' %>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="input-group">
+          <span class="input-group-addon" id="customer_fax_addon"><span class="glyphicon glyphicon-print" ></span></span>
+          <%= f.text_field :phone,
+                           :class => 'form-control',
+                           :placeholder => 'Fax',
+                           'aria-describedby'=>'customer_fax_addon' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-5">
+        <div class="input-group">
+          <span class="input-group-addon" id="customer_mail_addon"><span class="glyphicon glyphicon-envelope" ></span></span>
+          <%= f.text_field :phone,
+                           :class => 'form-control',
+                           :placeholder => 'E-Mail',
+                           'aria-describedby'=>'customer_mail_addon' %>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="input-group">
+          <span class="input-group-addon" id="customer_web_addon"><span class="glyphicon glyphicon-globe" ></span></span>
+          <%= f.text_field :phone,
+                           :class => 'form-control',
+                           :placeholder => 'URL',
+                           'aria-describedby'=>'customer_web_addon' %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <div class="input-group">
+          <span class="input-group-addon" id="customer_contactperson_addon"><span class="glyphicon glyphicon-user" ></span></span>
+          <%= f.text_field :phone,
+                           :class => 'form-control',
+                           :placeholder => 'Kontaktperson',
+                           'aria-describedby'=>'customer_contactperson_addon' %>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="btn-group col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                  customers_path,
+                  :method => :delete,
+                  :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                  :class => 'btn btn-primary' %>
+
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), customers_path, :class => 'btn btn-primary' %>
+    </div>
+
+<% end %>

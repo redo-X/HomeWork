@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-
   get 'welcome/index'
   root :to => 'welcome#index'
 
@@ -23,6 +21,7 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :new, :create, :edit, :destroy, :update]
   resources :production_orders, only: [:index, :new, :create, :edit, :destroy, :update]
   resources :article_groups, only: [:index, :new, :create, :edit, :destroy, :update]
+  resources :customers, only: [:index, :new, :create, :edit, :destroy, :update]
 
 
   #get 'products/:id' => 'catalog#view'

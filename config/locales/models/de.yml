@@ -4,7 +4,8 @@ de:
         article: "Artikel"
         user: "Benutzer"
         production_order: "Produktionsaufträge"
-        article_group: "Artikelgruppe"
+        article_group: "Artikelgruppen"
+        customer: "Kunden"
       attributes:
         article:
           code: "Nummer"
@@ -30,3 +31,14 @@ de:
         article_group:
           code: "Nummer"
           name: "Bezeichnung"
+        customer:
+          code: "Nummer"
+          name1: "Primärname"
+          name2: "Sekundärname"
+          phone: "Telefon"
+          mail: "E-Mail"
+          fax: "Fax"
+          web: "Internet"
+          contactperson: "Kontaktperson"
+          contact: "Kontakt"
+          ident: "Identifizierung"

@@ -1,0 +1,47 @@
+<%= form_for @article_group, :html => {:class => "form-horizontal article_group"} do |f| %>
+
+    <% if @article_group.errors.any? %>
+        <div id="error_expl" class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= pluralize(@article_group.errors.count, "error") %> prohibited this article_group
+              from being saved:</h3>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <% @article_group.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :code, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-2">
+        <%= f.text_field :code, :class => 'form-control' %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label :name, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :name, :class => 'form-control' %>
+      </div>
+    </div>
+
+
+    <div class="btn-group col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                  article_groups_path,
+                  :method => :delete,
+                  :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                  :class => 'btn btn-primary' %>
+
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), article_groups_path, :class => 'btn btn-primary' %>
+    </div>
+
+<% end %>
