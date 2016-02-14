@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require bootstrap-datepicker3
  *= require_tree .
  *= require_self
  */
@@ -24,7 +25,7 @@
     padding: 0;
 }
 
-.footer p{
+.footer p {
     font-size: small;
     line-height: 30px;
     vertical-align: middle;

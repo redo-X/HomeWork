@@ -3,6 +3,7 @@ de:
       models:
         article: "Artikel"
         user: "Benutzer"
+        production_order: "Produktionsaufträge"
       attributes:
         article:
           code: "Nummer"
@@ -16,3 +17,11 @@ de:
           last_name: "Nachname"
           last_sign_in_at: "Zuletzt angemeldet am"
           remember_me: "Angemeldet bleiben"
+        production_order:
+          number: "Nummer"
+          description: "Beschreibung"
+          quantity: "Losgröße"
+          pending_quantity: "Ausstehend"
+          release_date: "Freigabedatum"
+          due_date: "Fälligkeitsdatum"
+          isCompleted: "Ist abgeschlossen"
