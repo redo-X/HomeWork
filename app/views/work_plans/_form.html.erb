@@ -1,0 +1,68 @@
+<%= form_for @work_plan, :html => {:class => "form-horizontal work_plan"} do |f| %>
+
+    <% if @work_plan.errors.any? %>
+        <div id="error_expl" class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= pluralize(@work_plan.errors.count, "error") %> prohibited this work_plan from
+              being saved:</h3>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <% @work_plan.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :name, :class => 'form-control' %>
+      </div>
+    </div>
+
+    <% if @work_plan.new_record? %>
+        <div class="form-group">
+          <%= f.label "Kopieren von", :class => 'control-label col-lg-2' %>
+          <div class="col-lg-10">
+            <%= f.select_tag "source_work_plan", options_from_collection_for_select(WorkPlan.all, "id", "name"), prompt: " ", :class => 'form-control' %>
+          </div>
+        </div>
+    <% end %>
+
+
+
+    <div class="form-group">
+      <%= f.label :description, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :description, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :is_standard, :class => 'control-label col-lg-2' %>
+
+      <div class="col-lg-10">
+        <%= f.text_field :is_standard, :class => 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <div class="btn-group">
+          <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                      work_plans_path, :class => 'btn btn-primary' %>
+          <%= f.submit nil, :class => 'btn btn-success' %>
+          <% if @work_plan.new_record? == false %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                          work_plans_path,
+                          :method => 'delete',
+                          :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                          :class => 'btn btn-primary btn-danger' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+<% end %>

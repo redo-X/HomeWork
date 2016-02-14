@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214170312) do
+ActiveRecord::Schema.define(version: 20160214193750) do
 
   create_table "article_groups", force: :cascade do |t|
     t.string   "code"
@@ -97,5 +97,22 @@ ActiveRecord::Schema.define(version: 20160214170312) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+
+  create_table "work_plans", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.boolean  "is_standard"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "work_steps", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "work_plan_id"
+  end
+
+  add_index "work_steps", ["work_plan_id"], name: "index_work_steps_on_work_plan_id"
 
 end

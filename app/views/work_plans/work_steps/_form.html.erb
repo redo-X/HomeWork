@@ -1,0 +1,29 @@
+<%= form_for [@work_plan, @work_step], :html => {:class => "form-horizontal work_step"} do |f| %>
+
+
+    <div class="form-group">
+      <%= f.label :name, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :name, :class => 'form-control' %>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <div class="btn-group">
+          <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                      @work_plan, :class => 'btn btn-primary' %>
+          <%= f.submit nil, :class => 'btn btn-success' %>
+          <% if @work_step.new_record? == false %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                          work_plan_path(@work_plan),
+                          :method => 'delete',
+                          :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                          :class => 'btn btn-primary btn-danger' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+<% end %>

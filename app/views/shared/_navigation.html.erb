@@ -6,20 +6,33 @@
       <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" href="#">HomeWork</a>
+
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
 
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Verwalten <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><%= link_to User.model_name.human.titleize, users_path   %></li>
-            <li><%= link_to Article.model_name.human.titleize, articles_path   %></li>
-            <li><%= link_to ArticleGroup.model_name.human.titleize, article_groups_path   %></li>
-            <li><%= link_to ProductionOrder.model_name.human.titleize, production_orders_path   %></li>
-            <li><%= link_to Customer.model_name.human.titleize, customers_path   %></li>
+            <li><%= link_to User.model_name.human.titleize, users_path %></li>
+            <li><%= link_to Article.model_name.human.titleize, articles_path %></li>
+            <li><%= link_to ArticleGroup.model_name.human.titleize, article_groups_path %></li>
+            <li><%= link_to ProductionOrder.model_name.human.titleize, production_orders_path %></li>
+            <li><%= link_to Customer.model_name.human.titleize, customers_path %></li>
+            <li><%= link_to WorkPlan.model_name.human.titleize, work_plans_path %></li>
           </ul>
         </li>
+      </ul>
 
+
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+
+
+      <ul class="nav navbar-nav navbar-right">
         <%= render "shared/user" %>
       </ul>
     </div>

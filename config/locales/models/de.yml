@@ -6,6 +6,8 @@ de:
         production_order: "Produktionsaufträge"
         article_group: "Artikelgruppen"
         customer: "Kunden"
+        work_plan: "Arbeitspläne"
+        work_step: "Arbeitsschritte"
       attributes:
         article:
           code: "Nummer"
@@ -42,3 +44,10 @@ de:
           contactperson: "Kontaktperson"
           contact: "Kontakt"
           ident: "Identifizierung"
+        work_plan:
+          name: "Bezeichnung"
+          description: "Beschreibung"
+          is_standard: "Standard"
+          work_steps: "Arbeitsschritte"
+        work_step:
+          name: "Bezeichnung"
