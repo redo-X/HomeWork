@@ -1,0 +1,9 @@
+
+<%= form_tag search_path, :method => 'get', :class => 'form-inline' do %>
+    <div class="form-group">
+      <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Suchbegriff...',
+                         id: 'search_term'%>
+    </div>
+
+    <%= submit_tag "Suchen", :name => nil, class: 'btn btn-default', id: 'btnSearch', disabled: true %>
+<% end %>

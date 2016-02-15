@@ -1,0 +1,79 @@
+<div class="page-header">
+  <h1>Suchergebnisse</h1>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">Produktionsaufträge <span class="badge"><%= @production_orders.count(:id) %></span></div>
+
+  <% if @production_orders.count(:id) > 0 %>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Nummer</th>
+          <th>Artikel</th>
+          <th>Fälligkeitsdatum</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @production_orders.each do |production_order| %>
+            <tr>
+              <td><%= link_to production_order.number, edit_production_order_path(production_order.id) %></td>
+              <td><%= production_order.art_code + ' - ' + production_order.art_name %></td>
+              <td><%= production_order.due_date %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+  <% end %>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Artikel <span class="badge"><%= @articles.count(:id) %></span></div>
+
+  <% if @articles.count(:id) > 0 %>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Nummer</th>
+          <th>Bezeichnung</th>
+          <th>Version</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @articles.each do |article| %>
+            <tr>
+              <td><%= link_to article.code, edit_article_path(article.id) %></td>
+              <td><%= article.name %></td>
+              <td><%= article.version %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+  <% end %>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Arbeitspläne <span class="badge"><%= @work_plans.count(:id) %></span></div>
+
+  <% if @work_plans.count(:id) > 0 %>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Bezeichnung</th>
+          <th>Beschreibung</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @work_plans.each do |work_plan| %>
+            <tr>
+              <td><%= link_to work_plan.name, work_plan_path(work_plan.id) %></td>
+              <td><%= work_plan.description %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+  <% end %>
+</div>
+
+

@@ -9,3 +9,5 @@ jQuery -> $('[data-provide~=datepicker]').datepicker({
     autoclose: true,
     todayHighlight: true
   });
+
+

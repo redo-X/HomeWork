@@ -16,3 +16,10 @@
 //= require bootstrap-datepicker
 //= require_tree .
 
+
+$(document).ready(function() {
+    $("#search_term").on('keyup', function() {
+        $('#btnSearch').prop('disabled', this.value.length == 0);
+    });
+});
+

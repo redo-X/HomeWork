@@ -27,6 +27,10 @@ Rails.application.routes.draw do
     resources :work_steps, except: [:index], controller: 'work_plans/work_steps'
   end
 
+
+  get 'search' => 'search#index', :as => :search
+
+
   #get 'products/:id' => 'catalog#view'
 
   # The priority is based upon order of creation: first created -> highest priority.
