@@ -8,6 +8,7 @@ de:
         customer: "Kunden"
         work_plan: "Arbeitspläne"
         work_step: "Arbeitsschritte"
+        production_work_step: "Produktionsschritte"
       attributes:
         article:
           code: "Nummer"
@@ -30,6 +31,10 @@ de:
           release_date: "Freigabedatum"
           due_date: "Fälligkeitsdatum"
           isCompleted: "Ist abgeschlossen"
+          work_plan: "Arbeitsplanvorlage"
+          customer: "Kunde"
+          article: "Artikel"
+          production_work_steps: "Produktionsschritte"
         article_group:
           code: "Nummer"
           name: "Bezeichnung"

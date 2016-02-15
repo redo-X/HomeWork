@@ -98,7 +98,7 @@
         <%= f.submit nil, :class => 'btn btn-primary btn-success' %>
 
         <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                    customers_path,
+                    @customer,
                     :method => :delete,
                     :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
                     :class => 'btn btn-primary btn-danger' %>

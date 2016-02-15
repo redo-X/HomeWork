@@ -1,6 +1,9 @@
 class ProductionOrder < ActiveRecord::Base
   belongs_to :article, inverse_of: :productionorders
   belongs_to :customer, inverse_of: :productionorders
+  belongs_to :work_plan, inverse_of: :production_orders
+
+  has_many :production_work_steps, inverse_of: :production_order
 
   validates :number, presence: true, uniqueness: true
   validates :description, presence: false
@@ -16,5 +19,9 @@ class ProductionOrder < ActiveRecord::Base
     if due_date < release_date
       errors.add(:due_date, "muss größer als das Freigabedatum sein")
     end
+  end
+
+  def display_name
+    "#{number}"
   end
 end

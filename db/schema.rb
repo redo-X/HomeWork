@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214193750) do
+ActiveRecord::Schema.define(version: 20160215095029) do
 
   create_table "article_groups", force: :cascade do |t|
     t.string   "code"
@@ -55,10 +55,21 @@ ActiveRecord::Schema.define(version: 20160214193750) do
     t.datetime "updated_at",       null: false
     t.integer  "article_id"
     t.integer  "customer_id"
+    t.integer  "work_plan_id"
   end
 
   add_index "production_orders", ["article_id"], name: "index_production_orders_on_article_id"
   add_index "production_orders", ["customer_id"], name: "index_production_orders_on_customer_id"
+  add_index "production_orders", ["work_plan_id"], name: "index_production_orders_on_work_plan_id"
+
+  create_table "production_work_steps", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "production_order_id"
+  end
+
+  add_index "production_work_steps", ["production_order_id"], name: "index_production_work_steps_on_production_order_id"
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"

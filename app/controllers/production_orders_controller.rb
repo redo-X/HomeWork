@@ -1,5 +1,5 @@
 class ProductionOrdersController < ApplicationController
-  before_action :set_production_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_production_order, only: [:edit, :update, :destroy]
 
   # GET /production_orders
   # GET /production_orders.json
@@ -31,6 +31,16 @@ class ProductionOrdersController < ApplicationController
   def create
     @production_order = ProductionOrder.new(production_order_params)
 
+    sourceWorkPlan = WorkPlan.find(params[:production_order][:work_plan_id])
+
+    if sourceWorkPlan.present?
+      sourceWorkPlan.work_steps.each do |ws|
+        newWorkStep = ProductionWorkStep.new
+        newWorkStep.name = ws.name
+        @production_order.production_work_steps << newWorkStep
+      end
+    end
+
     respond_to do |format|
       if @production_order.save
         format.html { redirect_to edit_production_order_path(@production_order), notice: 'Production order was successfully created.' }
@@ -59,9 +69,10 @@ class ProductionOrdersController < ApplicationController
   # DELETE /production_orders/1
   # DELETE /production_orders/1.json
   def destroy
+    @production_order.production_work_steps.destroy_all
     @production_order.destroy
     respond_to do |format|
-      format.html { redirect_to production_orders_url, notice: 'Production order was successfully destroyed.' }
+      format.html { redirect_to production_orders_path, notice: 'Production order was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,11 +81,12 @@ class ProductionOrdersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_production_order
       @production_order = ProductionOrder.find(params[:id])
+      @production_work_steps = @production_order.production_work_steps
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def production_order_params
       params.require(:production_order).permit(:number, :description, :quantity, :pending_quantity, :release_date,
-                                               :due_date, :isCompleted, :article_id, :customer_id)
+                                               :due_date, :isCompleted, :article_id, :customer_id, :work_plan_id)
     end
 end

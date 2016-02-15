@@ -66,13 +66,57 @@
     </div>
 
 
+    <% if @production_order.new_record? %>
+        <div class="form-group">
+          <%= f.label :work_plan, :class => 'control-label col-lg-2' %>
+          <div class="col-lg-10">
+            <%= f.collection_select :work_plan_id, WorkPlan.all, :id, :name, {:prompt => true}, {:class => 'form-control'} %>
+          </div>
+        </div>
+    <% else %>
+        <div class="form-group">
+          <%= f.label :production_work_steps, :class => 'control-label col-lg-2' %>
+
+          <div class="col-lg-10">
+            <table class="table">
+              <thead>
+              <th>Name</th>
+              <th></th>
+              </thead>
+              <tbody>
+              <% @production_work_steps.each do |w| %>
+                  <tr>
+                    <td><%= w.name %></td>
+                    <td>
+                      <%= link_to ("<span class=\"glyphicon glyphicon-trash\" ></span>").html_safe,
+                                  [@production_order, w],
+                                  :method => :delete,
+                                  :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                                  :class => 'btn btn-xs btn-danger pull-right' %>
+                    </td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+
+            <%= link_to ('<span class="glyphicon glyphicon-plus"></span>').html_safe + ' ' + t('.addProductionWorkStep', :default => t("helpers.links.new")),
+                        new_production_order_production_work_step_path(@production_order),
+                        :class => 'btn btn-default pull-right' %>
+          </div>
+
+        </div>
+    <% end %>
+
+
+
+
     <div class="form-group">
       <div class="btn-group col-lg-offset-2 col-lg-10">
         <%= link_to t('.cancel', :default => t("helpers.links.cancel")), production_orders_path, :class => 'btn btn-primary' %>
         <%= f.submit nil, :class => 'btn btn-primary btn-success' %>
 
         <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                    production_orders_path,
+                    @production_order,
                     :method => :delete,
                     :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
                     :class => 'btn btn-primary btn-danger' %>

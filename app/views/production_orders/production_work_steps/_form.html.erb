@@ -1,4 +1,4 @@
-<%= form_for [@work_plan, @work_step], :html => {:class => "form-horizontal work_step"} do |f| %>
+<%= form_for [@production_order, @production_work_step], :html => {:class => "form-horizontal production_work_step"} do |f| %>
 
 
     <div class="form-group">
@@ -9,17 +9,17 @@
     </div>
 
 
-
-
     <div class="form-group">
       <div class="col-lg-offset-2 col-lg-10">
         <div class="btn-group">
           <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                      @work_plan, :class => 'btn btn-primary' %>
+                      @production_order, :class => 'btn btn-primary' %>
+
           <%= f.submit nil, :class => 'btn btn-success' %>
-          <% if @work_step.new_record? == false %>
+
+          <% if @production_work_step.new_record? == false %>
               <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                          work_plan_path(@work_plan),
+                          edit_production_order_path(@production_order),
                           :method => 'delete',
                           :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
                           :class => 'btn btn-primary btn-danger' %>
