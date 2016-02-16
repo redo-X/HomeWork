@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'production_order_attachments/index'
-
-  get 'production_order_attachments/new'
-
-  get 'production_order_attachments/create'
-
-  get 'production_order_attachments/destroy'
-
   get 'welcome/index'
   root :to => 'welcome#index'
 
