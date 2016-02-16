@@ -1,0 +1,23 @@
+<%- model_class = ProductionOrderAttachment -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<% if !@production_order_attachment.errors.empty? %>
+    <div class="alert alert-error">
+      <ul>
+        <% @production_order_attachment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<div class="well">
+  <%= form_for @production_order_attachment, html: { multipart: true } do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :attachment %>
+      <%= f.file_field :attachment %>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+  <% end %>
+</div>
