@@ -36,9 +36,9 @@ gem 'i18n', '~> 0.7.0'
 gem 'rolify'
 gem 'cancan'
 
-
 gem 'bootstrap-datepicker-rails'
 
+gem 'carrierwave'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

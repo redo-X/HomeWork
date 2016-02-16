@@ -9,6 +9,7 @@ de:
         work_plan: "Arbeitspläne"
         work_step: "Arbeitsschritte"
         production_work_step: "Produktionsschritte"
+        production_order_attachment: "Produktionsanhang"
       attributes:
         article:
           code: "Nummer"

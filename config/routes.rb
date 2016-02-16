@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'production_order_attachments/index'
+
+  get 'production_order_attachments/new'
+
+  get 'production_order_attachments/create'
+
+  get 'production_order_attachments/destroy'
+
   get 'welcome/index'
   root :to => 'welcome#index'
 
@@ -28,6 +36,7 @@ Rails.application.routes.draw do
   resources :work_plans do
     resources :work_steps, except: [:index, :show], controller: 'work_plans/work_steps'
   end
+  resources :production_order_attachments, only: [:index, :new, :create, :destroy]
 
 
   get 'search' => 'search#index', :as => :search
