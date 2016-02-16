@@ -1,2 +1,29 @@
 <h1><%= t('hello') %></h1>
 
+
+<table class="table table-striped">
+
+  <tbody>
+  <% @production_orders.each do |production_order| %>
+      <tr>
+        <td><%= link_to production_order.number, edit_production_order_path(production_order) %></td>
+        <td><%= production_order.article.display_name %></td>
+        <td><%= production_order.quantity %></td>
+        <td><%= production_order.pending_quantity %></td>
+        <td><%=l production_order.due_date %></td>
+        <td><%= production_order.isCompleted %></td>
+        <td>
+          <%= link_to ("<span class=\"glyphicon glyphicon-trash\" ></span>").html_safe,
+                      production_order_path(production_order),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to ('<span class="glyphicon glyphicon-plus"></span>').html_safe + ' ' + t('.new', :default => t("helpers.links.new")),
+            new_production_order_path,
+            :class => 'btn btn-default' %>
