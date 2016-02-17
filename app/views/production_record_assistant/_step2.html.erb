@@ -1,0 +1,13 @@
+<%= form_tag({:controller => "production_record_assistant", :action => "production_work_step_select"},
+             :id => 'production_work_step_selection_form', :method => "get", remote: true) do %>
+
+    <%= hidden_field_tag :production_order, @production_order.id %>
+
+    <div class="form-group">
+      <%= select_tag :production_work_step,
+                     options_from_collection_for_select(@production_work_steps, :id, :name),
+                     class: 'form-control' %>
+    </div>
+
+    <%= submit_tag "Weiter", :name => nil, class: 'btn btn-default' %>
+<% end %>

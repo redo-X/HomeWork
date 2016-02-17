@@ -23,7 +23,7 @@ class ArticleGroupsController < ApplicationController
 
     respond_to do |format|
       if @article_group.save
-        format.html { redirect_to edit_article_group_path(@article_group), notice: 'Article group was successfully created.' }
+        format.html { redirect_to article_groups_path, notice: 'Article group was successfully created.' }
         format.json { render :show, status: :created, location: @article_group }
       else
         format.html { render :new }
@@ -37,7 +37,7 @@ class ArticleGroupsController < ApplicationController
   def update
     respond_to do |format|
       if @article_group.update(article_group_params)
-        format.html { redirect_to edit_article_group_path(@article_group), notice: 'Article group was successfully updated.' }
+        format.html { redirect_to article_groups_path, notice: 'Article group was successfully updated.' }
         format.json { render :show, status: :ok, location: @article_group }
       else
         format.html { render :edit }

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :production_records
   get 'welcome/index'
   root :to => 'welcome#index'
 
@@ -31,7 +32,11 @@ Rails.application.routes.draw do
 
 
   get 'search' => 'search#index', :as => :search
+  get 'production_record_assistant' => 'production_record_assistant#index', :as => :production_record_assistant
 
+  get 'production_record_assistant_set_production_order' => 'production_record_assistant#production_order_select'
+  get 'production_record_assistant_set_production_work_step' => 'production_record_assistant#production_work_step_select'
+  get 'production_record_assistant_set_work_details' => 'production_record_assistant#work_details_input'
 
   #get 'products/:id' => 'catalog#view'
 

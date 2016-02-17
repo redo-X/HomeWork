@@ -13,7 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.de.js
+//= require moment
+//= require bootstrap-datetimepicker
+//= require moment/de
 //= require_tree .
 
 

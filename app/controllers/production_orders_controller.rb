@@ -31,7 +31,7 @@ class ProductionOrdersController < ApplicationController
   def create
     @production_order = ProductionOrder.new(production_order_params)
 
-    sourceWorkPlan = WorkPlan.find(params[:production_order][:work_plan_id])
+    sourceWorkPlan = WorkPlan.find_by(id: params[:production_order][:work_plan_id])
 
     if sourceWorkPlan.present?
       sourceWorkPlan.work_steps.each do |ws|

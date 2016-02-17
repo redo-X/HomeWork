@@ -1,0 +1,27 @@
+<%= form_tag({:controller => "production_record_assistant", :action => "work_details_input"},
+             :id => 'work_details_form', :method => "get", :class => "form-horizontal", remote: true) do %>
+
+    <div class="form-group">
+      <%= hidden_field_tag :production_order, @production_order.id %>
+      <%= hidden_field_tag :production_work_step, @production_work_step.id %>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-6">
+        <%= text_field_tag 'start', nil, class: 'form-control', placeholder: 'Startzeitpunkt eingeben', id: 'startTimePicker' %>
+      </div>
+
+      <div class="col-lg-6">
+        <%= text_field_tag 'finish', nil, class: 'form-control', placeholder: 'Endzeitpunkt eingeben' %>
+      </div>
+    </div>
+
+
+    <div class="form-group ">
+      <div class="btn-group col-lg-12">
+        <%= submit_tag "Speichern", :name => nil, class: 'btn btn-default' %>
+      </div>
+
+    </div>
+
+<% end %>

@@ -29,7 +29,7 @@ class WorkPlansController < ApplicationController
 
     @work_plan = WorkPlan.new(work_plan_params)
 
-    sourceWorkPlan = WorkPlan.find(params[:source_work_plan])
+    sourceWorkPlan = WorkPlan.find_by(id: params[:source_work_plan])
 
     if sourceWorkPlan.present?
       sourceWorkPlan.work_steps.each do |ws|

@@ -4,6 +4,7 @@ class ProductionOrder < ActiveRecord::Base
   belongs_to :work_plan, inverse_of: :production_orders
 
   has_many :production_work_steps, inverse_of: :production_order
+  has_many :production_records, inverse_of: :production_order
 
   validates :number, presence: true, uniqueness: true
   validates :description, presence: false
@@ -23,5 +24,8 @@ class ProductionOrder < ActiveRecord::Base
 
   def display_name
     "#{number}"
+  end
+  def display_name_with_article
+    "#{number}: #{article.display_name}"
   end
 end
