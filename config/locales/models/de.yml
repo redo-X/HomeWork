@@ -57,3 +57,6 @@ de:
           work_steps: "Arbeitsschritte"
         work_step:
           name: "Bezeichnung"
+        production_order_attachment:
+          name: "Bezeichnung"
+          link: "Download Link"
