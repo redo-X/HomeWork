@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20160218193609) do
     t.string   "attachment"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.integer 'production_order_id'
+    t.integer  "production_order_id"
   end
 
   add_index "production_order_attachments", ["production_order_id"], name: "index_production_order_attachments_on_production_order_id"
