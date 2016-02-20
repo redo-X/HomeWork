@@ -2,6 +2,6 @@ class WelcomeController < ApplicationController
 
 
   def index
-    @production_orders = ProductionOrder.all
+    @favorites = current_user.favorites
   end
 end

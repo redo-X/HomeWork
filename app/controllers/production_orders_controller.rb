@@ -78,6 +78,24 @@ class ProductionOrdersController < ApplicationController
     end
   end
 
+  # Add and remove favorite production_orders
+  # for current_user
+  def favorite
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @production_order
+      redirect_to :back, notice: 'You favorited #{@production_order.number}'
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@production_order)
+      redirect_to :back, notice: 'Unfavorited #{@production_order.number}'
+
+    else
+      # Type missing, nothing happens
+      redirect_to :back, notice: 'Nothing happened.'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_production_order

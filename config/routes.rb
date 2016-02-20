@@ -32,6 +32,10 @@ Rails.application.routes.draw do
     resources :work_steps, except: [:index, :show], controller: 'work_plans/work_steps'
   end
 
+  resources :production_orders do
+    put :favorite, on: :member
+  end
+
 
 
   get 'search' => 'search#index', :as => :search

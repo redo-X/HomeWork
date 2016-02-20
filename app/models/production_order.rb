@@ -3,6 +3,10 @@ class ProductionOrder < ActiveRecord::Base
   belongs_to :customer, inverse_of: :productionorders
   belongs_to :work_plan, inverse_of: :production_orders
 
+  belongs_to :user
+  has_many :favorite_production_orders
+  has_many :favorited_by, through: :favorite_production_orders, source: :user
+
   has_many :production_work_steps, inverse_of: :production_order
   has_many :production_order_attachments, inverse_of: :production_order
 

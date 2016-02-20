@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218193609) do
+ActiveRecord::Schema.define(version: 20160220185234) do
 
   create_table "article_groups", force: :cascade do |t|
     t.string   "code"
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 20160218193609) do
     t.string   "web"
   end
 
+  create_table "favorite_production_orders", force: :cascade do |t|
+    t.integer  "production_order_id"
+    t.integer  "user_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
   create_table "production_order_attachments", force: :cascade do |t|
     t.string   "name"
     t.string   "attachment"
@@ -67,6 +74,7 @@ ActiveRecord::Schema.define(version: 20160218193609) do
     t.integer  "article_id"
     t.integer  "customer_id"
     t.integer  "work_plan_id"
+    t.integer  "user_id"
   end
 
   add_index "production_orders", ["article_id"], name: "index_production_orders_on_article_id"
