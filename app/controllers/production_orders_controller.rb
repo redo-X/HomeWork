@@ -70,6 +70,7 @@ class ProductionOrdersController < ApplicationController
   # DELETE /production_orders/1.json
   def destroy
     @production_order.production_work_steps.destroy_all
+    @production_order.production_order_attachments.destroy_all
     @production_order.destroy
     respond_to do |format|
       format.html { redirect_to production_orders_path, notice: 'Production order was successfully destroyed.' }
@@ -82,6 +83,7 @@ class ProductionOrdersController < ApplicationController
     def set_production_order
       @production_order = ProductionOrder.find(params[:id])
       @production_work_steps = @production_order.production_work_steps
+      @production_order_attachments = @production_order.production_order_attachments
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

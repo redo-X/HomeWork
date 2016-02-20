@@ -23,12 +23,15 @@ Rails.application.routes.draw do
   resources :production_orders, only: [:index, :new, :create, :edit, :destroy, :update] do
     resources :production_work_steps, except: [:index, :show], controller: 'production_orders/production_work_steps'
   end
+  resources :production_orders, only: [:index, :new, :create, :edit, :destroy, :update] do
+    resources :production_order_attachments, except: [:index, :show], controller: 'production_orders/production_order_attachments'
+  end
   resources :article_groups, only: [:index, :new, :create, :edit, :destroy, :update]
   resources :customers, only: [:index, :new, :create, :edit, :destroy, :update]
   resources :work_plans do
     resources :work_steps, except: [:index, :show], controller: 'work_plans/work_steps'
   end
-  resources :production_order_attachments, only: [:index, :new, :create, :destroy]
+
 
 
   get 'search' => 'search#index', :as => :search

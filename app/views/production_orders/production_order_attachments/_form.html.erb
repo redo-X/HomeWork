@@ -1,4 +1,4 @@
-<%= form_for @production_order_attachment, :html => {:class => "form-horizontal article_group"} do |f| %>
+<%= form_for [@production_order, @production_order_attachment], :html => {:class => "form-horizontal article_group"} do |f| %>
 
     <% if !@production_order_attachment.errors.empty? %>
         <div id="error_expl" class="panel panel-danger">

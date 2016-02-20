@@ -36,6 +36,7 @@ de:
           customer: "Kunde"
           article: "Artikel"
           production_work_steps: "Produktionsschritte"
+          production_order_attachments: "Produktionsänhänge"
         article_group:
           code: "Nummer"
           name: "Bezeichnung"

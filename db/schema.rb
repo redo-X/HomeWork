@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217163637) do
+ActiveRecord::Schema.define(version: 20160218193609) do
 
   create_table "article_groups", force: :cascade do |t|
     t.string   "code"
@@ -47,9 +47,12 @@ ActiveRecord::Schema.define(version: 20160217163637) do
   create_table "production_order_attachments", force: :cascade do |t|
     t.string   "name"
     t.string   "attachment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer 'production_order_id'
   end
+
+  add_index "production_order_attachments", ["production_order_id"], name: "index_production_order_attachments_on_production_order_id"
 
   create_table "production_orders", force: :cascade do |t|
     t.integer  "number"
