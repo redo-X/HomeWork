@@ -81,14 +81,15 @@ class ProductionOrdersController < ApplicationController
   # Add and remove favorite production_orders
   # for current_user
   def favorite
+    @production_order = ProductionOrder.find(params[:id])
     type = params[:type]
     if type == "favorite"
       current_user.favorites << @production_order
-      redirect_to :back, notice: 'You favorited #{@production_order.number}'
+      redirect_to :back, notice: "You favorited #{@production_order.number}"
 
     elsif type == "unfavorite"
       current_user.favorites.delete(@production_order)
-      redirect_to :back, notice: 'Unfavorited #{@production_order.number}'
+      redirect_to :back, notice: "Unfavorited #{@production_order.number}"
 
     else
       # Type missing, nothing happens

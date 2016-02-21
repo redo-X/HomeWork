@@ -11,7 +11,7 @@
       <th><%= model_class.human_attribute_name(:pending_quantity) %></th>
       <th><%= model_class.human_attribute_name(:due_date) %></th>
       <th><%= model_class.human_attribute_name(:isCompleted) %></th>
-      <th></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
@@ -25,11 +25,11 @@
         <td><%= production_order.isCompleted %></td>
         <td>
           <% if current_user %>
-              <%= link_to "favorite",   favorite_production_order_path(production_order, type: "favorite"), method: :put %>
-              <%= link_to "unfavorite", favorite_production_order_path(production_order, type: "unfavorite"), method: :put %>
+              <%= link_to ("<span class=\"glyphicon glyphicon-star\" ></span>").html_safe,
+                          favorite_production_order_path(production_order, type: "favorite"),
+                          method: :put,
+                          :class => 'btn btn-xs btn-warning'%>
           <% end %>
-        </td>
-        <td>
           <%= link_to ("<span class=\"glyphicon glyphicon-trash\" ></span>").html_safe,
                       production_order_path(production_order),
                       :method => :delete,

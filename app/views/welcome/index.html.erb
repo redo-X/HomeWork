@@ -1,6 +1,6 @@
-<h1><%= t('hello') %></h1>
-
-
+<div class="page-header">
+  <h1><%="Favoriten".titleize %></h1>
+</div>
 <table class="table table-striped">
 
   <tbody>
@@ -13,6 +13,12 @@
         <td><%=l production_order.due_date %></td>
         <td><%= production_order.isCompleted %></td>
         <td>
+          <% if current_user %>
+              <%= link_to ("<span class=\"glyphicon glyphicon-star-empty\" ></span>").html_safe,
+                          favorite_production_order_path(production_order, type: "unfavorite"),
+                          method: :put,
+                          :class => 'btn btn-xs btn-warning'%>
+          <% end %>
           <%= link_to ("<span class=\"glyphicon glyphicon-trash\" ></span>").html_safe,
                       production_order_path(production_order),
                       :method => :delete,
