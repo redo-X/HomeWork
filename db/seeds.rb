@@ -7,9 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 pass = "geheim"
+
 admin = User.create email: 'admin@system.de',
                     password: pass,
                     password_confirmation: pass
 
+user = User.create email: 'user@system.de',
+                    password: pass,
+                    password_confirmation: pass
+
 admin.add_role :admin
+user.add_role :user
+
 puts "Admin password is #{pass}"
+puts "User password is #{pass}"

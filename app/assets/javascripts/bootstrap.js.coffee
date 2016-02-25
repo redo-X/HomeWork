@@ -3,11 +3,10 @@ jQuery ->
   $("a[rel~=tooltip], .has-tooltip").tooltip()
 
 jQuery -> $('[data-provide~=datepicker]').datepicker({
-    format: "dd.mm.yyyy",
-    language: "de",
-    calendarWeeks: true,
-    autoclose: true,
-    todayHighlight: true
-  });
-
+  format: "dd.mm.yyyy",
+  language: "de",
+  calendarWeeks: true,
+  autoclose: true,
+  todayHighlight: true
+});
 

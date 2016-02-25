@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :new, :create, :edit, :destroy, :update]
   resources :production_orders, only: [:index, :new, :create, :edit, :destroy, :update] do
     resources :production_work_steps, except: [:index, :show], controller: 'production_orders/production_work_steps'
+    resources :production_records, only: [:index], controller: 'production_orders/production_records'
   end
   resources :article_groups, only: [:index, :new, :create, :edit, :destroy, :update]
   resources :customers, only: [:index, :new, :create, :edit, :destroy, :update]
