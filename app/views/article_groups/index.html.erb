@@ -13,9 +13,12 @@
   <tbody>
     <% @article_groups.each do |article_group| %>
       <tr>
-        <td><%= link_to article_group.code, edit_article_group_path(article_group) %></td>
+        <td><%= article_group.code %></td>
         <td><%= article_group.name %></td>
         <td>
+          <%= link_to ("<span class=\"glyphicon glyphicon-pencil\" ></span>").html_safe,
+                      edit_article_group_path(article_group),
+                      :class => 'btn btn-xs btn-info'%>
           <%= link_to ("<span class=\"glyphicon glyphicon-trash\" ></span>").html_safe,
                       article_group_path(article_group),
                       :method => :delete,

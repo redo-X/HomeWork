@@ -1,5 +1,10 @@
 <% if user_signed_in? %>
-    <li><%= link_to t('signed_in') + " #{current_user.email}", destroy_user_session_path, :method => :delete %></li>
+      <li>
+        <p class="navbar-text">
+          <%=t('signed_in') + " #{current_user.email}"%>
+          <%=link_to ('<span class="glyphicon glyphicon-off"></span>').html_safe, destroy_user_session_path, :method => :delete%>
+        </p>
+      </li>
 <% else %>
     <li><%= link_to t('sign_in'), new_user_session_path %></li>
 <% end %>

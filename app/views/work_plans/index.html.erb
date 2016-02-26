@@ -14,10 +14,13 @@
   <tbody>
     <% @work_plans.each do |work_plan| %>
       <tr>
-        <td><%= link_to work_plan.name, work_plan_path(work_plan) %></td>
+        <td><%= work_plan.name%></td>
         <td><%= work_plan.description %></td>
         <td><%= work_plan.is_standard %></td>
         <td>
+          <%= link_to ('<span class="glyphicon glyphicon-pencil"></span>').html_safe,
+                      work_plan_path(work_plan),
+                      :class => 'btn btn-xs btn-info'%>
           <%= link_to ("<span class=\"glyphicon glyphicon-trash\" ></span>").html_safe,
                       work_plan_path(work_plan),
                       :method => :delete,
