@@ -20,9 +20,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if @user.save
         format.html { redirect_to users_path, notice: 'Benutzer wurde erfolgreich angelegt.' }
       else
-        clean_up_passwords resource
-        set_minimum_password_length
-        respond_with resource
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+        #clean_up_passwords resource
+        #set_minimum_password_length
+        #respond_with resource
       end
     end
   end
