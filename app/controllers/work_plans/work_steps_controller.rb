@@ -24,7 +24,7 @@ class WorkPlans::WorkStepsController < ApplicationController
 
     respond_to do |format|
       if @work_step.save
-        format.html { redirect_to @work_plan, notice: 'Work step was successfully created.' }
+        format.html { redirect_to edit_work_plan_path(@work_plan), notice: t('helpers.flashes.created', :model => WorkStep.model_name.human.titleize) }
         format.json { render :show, status: :created, location: @work_plan }
       else
         format.html { render :new }
@@ -38,7 +38,7 @@ class WorkPlans::WorkStepsController < ApplicationController
   def update
     respond_to do |format|
       if @work_step.update(work_step_params)
-        format.html { redirect_to @work_plan, notice: 'Work step was successfully updated.' }
+        format.html { redirect_to edit_work_plan_path(@work_plan), notice: t('helpers.flashes.updated', :model => WorkStep.model_name.human.titleize) }
         format.json { render :show, status: :ok, location: @work_plan }
       else
         format.html { render :edit }
@@ -53,9 +53,9 @@ class WorkPlans::WorkStepsController < ApplicationController
     title = @work_step.name
 
     if @work_step.destroy
-      flash[:notice] = "\"#{title}\" was deleted successfully."
+      flash[:notice] = t('helpers.flashes.destroyed', :model => WorkStep.model_name.human.titleize)
 
-      redirect_to @work_plan
+      redirect_to edit_work_plan_path(@work_plan)
     else
       flash[:error] = "\"#{title}\" was not deleted due an error."
       render :show

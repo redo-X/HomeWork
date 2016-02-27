@@ -28,7 +28,7 @@ class ProductionOrders::ProductionOrderAttachmentsController < ApplicationContro
     title = @production_order_attachment.name
 
     if @production_order_attachment.destroy
-      flash[:notice] = "\"#{title}\" was deleted successfully."
+      flash[:notice] = t('helpers.flashes.destroyed', :model => ProductionOrderAttachment.model_name.human.titleize)
 
       redirect_to edit_production_order_path(@production_order)
     else

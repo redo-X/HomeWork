@@ -27,7 +27,7 @@ class ArticleGroupsController < ApplicationController
 
     respond_to do |format|
       if @article_group.save
-        format.html { redirect_to edit_article_group_path(@article_group), notice: 'Article group was successfully created.' }
+        format.html { redirect_to edit_article_group_path(@article_group), notice: t('helpers.flashes.created', :model => ArticleGroup.model_name.human.titleize) }
         format.json { render :show, status: :created, location: @article_group }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class ArticleGroupsController < ApplicationController
   def update
     respond_to do |format|
       if @article_group.update(article_group_params)
-        format.html { redirect_to edit_article_group_path(@article_group), notice: 'Article group was successfully updated.' }
+        format.html { redirect_to edit_article_group_path(@article_group), notice: t('helpers.flashes.updated', :model => ArticleGroup.model_name.human.titleize) }
         format.json { render :show, status: :ok, location: @article_group }
       else
         format.html { render :edit }
@@ -55,7 +55,7 @@ class ArticleGroupsController < ApplicationController
   def destroy
     @article_group.destroy
     respond_to do |format|
-      format.html { redirect_to article_groups_url, notice: 'Article group was successfully destroyed.' }
+      format.html { redirect_to article_groups_url, notice: t('helpers.flashes.destroyed', :model => ArticleGroup.model_name.human.titleize) }
       format.json { head :no_content }
     end
   end

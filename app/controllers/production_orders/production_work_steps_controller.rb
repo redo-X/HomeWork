@@ -22,7 +22,7 @@ class ProductionOrders::ProductionWorkStepsController < ApplicationController
 
     respond_to do |format|
       if @production_work_step.save
-        format.html { redirect_to edit_production_order_path(@production_order), notice: 'Work step was successfully created.' }
+        format.html { redirect_to edit_production_order_path(@production_order), notice: t('helpers.flashes.created', :model => ProductionWorkStep.model_name.human.titleize) }
         format.json { render :show, status: :created, location: @production_order }
       else
         format.html { render :new }
@@ -36,7 +36,7 @@ class ProductionOrders::ProductionWorkStepsController < ApplicationController
   def update
     respond_to do |format|
       if @production_work_step.update(production_work_step_params)
-        format.html { redirect_to @production_work_step, notice: 'Production work step was successfully updated.' }
+        format.html { redirect_to @production_work_step, notice: t('helpers.flashes.updated', :model => ProductionWorkStep.model_name.human.titleize) }
         format.json { render :show, status: :ok, location: @production_work_step }
       else
         format.html { render :edit }
@@ -51,7 +51,7 @@ class ProductionOrders::ProductionWorkStepsController < ApplicationController
     title = @production_order.display_name
 
     if @production_work_step.destroy
-      flash[:notice] = "\"#{title}\" was deleted successfully."
+      flash[:notice] = t('helpers.flashes.destroyed', :model => ProductionWorkStep.model_name.human.titleize)
 
       redirect_to edit_production_order_path(@production_order)
     else

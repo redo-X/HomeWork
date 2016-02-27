@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
   resources :article_groups, only: [:index, :new, :create, :edit, :destroy, :update]
   resources :customers, only: [:index, :new, :create, :edit, :destroy, :update]
-  resources :work_plans do
+  resources :work_plans, except: [:show] do
     resources :work_steps, except: [:index, :show], controller: 'work_plans/work_steps'
   end
 
