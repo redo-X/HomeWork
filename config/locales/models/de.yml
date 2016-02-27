@@ -1,15 +1,36 @@
 de:
   activerecord:
       models:
-        article: "Artikel"
-        user: "Benutzer"
-        production_order: "Produktionsaufträge"
-        article_group: "Artikelgruppen"
-        customer: "Kunden"
-        work_plan: "Arbeitspläne"
-        work_step: "Arbeitsschritte"
-        production_work_step: "Produktionsschritte"
-        production_record: "Produktionsbuchungen"
+        article:
+          one: "Artikel"
+          other: "Artikel"
+        user:
+          one: "Benutzer"
+          other: "Benutzer"
+        production_order:
+          one: "Produktionsauftrag"
+          other: "Produktionsaufträge"
+        article_group:
+          one: "Artikelgruppe"
+          other: "Artikelgruppen"
+        customer:
+          one: "Kunde"
+          other: "Kunden"
+        work_plan:
+          one: "Arbeitsplan"
+          other: "Arbeitspläne"
+        work_step:
+          one: "Arbeitsschritt"
+          other: "Arbeitsschritte"
+        production_work_step:
+          one: "Produktionsschritt"
+          other: "Produktionsschritte"
+        production_order_attachment:
+          one: "Produktionsanhang"
+          other: "Produktionsanhänge"
+        production_record:
+          one: "Produktionsbuchung"
+          other: "Produktionsbuchungen"
 
       attributes:
         article:
@@ -38,6 +59,7 @@ de:
           article: "Artikel"
           production_work_steps: "Produktionsschritte"
           production_records: "Produktionsbuchungen"
+          production_order_attachments: "Anhänge"
         production_record:
           start: "Start"
           finish: "Ende"
@@ -47,6 +69,7 @@ de:
           production_order: "Produktionsauftrag"
           production_work_step: "Produktionsschritt"
           user: "Mitarbeiter"
+          production_order_attachments: "Produktionsänhänge"
         article_group:
           code: "Nummer"
           name: "Bezeichnung"
@@ -68,6 +91,9 @@ de:
           work_steps: "Arbeitsschritte"
         work_step:
           name: "Bezeichnung"
+        production_order_attachment:
+          name: "Bezeichnung"
+          link: "Download Link"
 
 
   production_orders:

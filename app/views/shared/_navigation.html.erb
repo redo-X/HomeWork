@@ -16,12 +16,12 @@
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Verwalten <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><%= link_to User.model_name.human.titleize, users_path %></li>
-                <li><%= link_to Article.model_name.human.titleize, articles_path %></li>
-                <li><%= link_to ArticleGroup.model_name.human.titleize, article_groups_path %></li>
-                <li><%= link_to ProductionOrder.model_name.human.titleize, production_orders_path %></li>
-                <li><%= link_to Customer.model_name.human.titleize, customers_path %></li>
-                <li><%= link_to WorkPlan.model_name.human.titleize, work_plans_path %></li>
+                <li><%= link_to User.model_name.human(:count => 2).titleize, users_path %></li>
+                <li><%= link_to ArticleGroup.model_name.human(:count => 2).titleize, article_groups_path %></li>
+                <li><%= link_to Customer.model_name.human(:count => 2).titleize, customers_path %></li>
+                <li><%= link_to WorkPlan.model_name.human(:count => 2).titleize, work_plans_path %></li>
+                <li><%= link_to Article.model_name.human(:count => 2).titleize, articles_path %></li>
+                <li><%= link_to ProductionOrder.model_name.human(:count => 2).titleize, production_orders_path %></li>
             </ul>
           </li>
 

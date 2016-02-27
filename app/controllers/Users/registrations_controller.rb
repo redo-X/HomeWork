@@ -3,7 +3,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   prepend_before_filter :require_no_authentication, only: []
 
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -54,6 +54,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     end
 
+  end
+
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'user destroyed' }
+      format.json { head :no_content }
+    end
   end
 
   private

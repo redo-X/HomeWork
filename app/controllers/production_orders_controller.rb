@@ -45,7 +45,7 @@ class ProductionOrdersController < ApplicationController
 
     respond_to do |format|
       if @production_order.save
-        format.html { redirect_to edit_production_order_path(@production_order), notice: 'Production order was successfully created.' }
+        format.html { redirect_to edit_production_order_path(@production_order), notice: t('helpers.flashes.created', :model => ProductionOrder.model_name.human.titleize) }
         format.json { render :show, status: :created, location: @production_order }
       else
         format.html { render :new }
@@ -59,7 +59,7 @@ class ProductionOrdersController < ApplicationController
   def update
     respond_to do |format|
       if @production_order.update(production_order_params)
-        format.html { redirect_to edit_production_order_path(@production_order), notice: 'Production order was successfully updated.' }
+        format.html { redirect_to edit_production_order_path(@production_order), notice: t('helpers.flashes.updated', :model => ProductionOrder.model_name.human.titleize) }
         format.json { render :show, status: :ok, location: @production_order }
       else
         format.html { render :edit }
@@ -74,7 +74,7 @@ class ProductionOrdersController < ApplicationController
     @production_order.production_work_steps.destroy_all
     @production_order.destroy
     respond_to do |format|
-      format.html { redirect_to production_orders_path, notice: 'Production order was successfully destroyed.' }
+      format.html { redirect_to production_orders_path, notice: t('helpers.flashes.destroyed', :model => ProductionOrder.model_name.human.titleize) }
       format.json { head :no_content }
     end
   end
