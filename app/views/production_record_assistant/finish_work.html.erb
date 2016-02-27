@@ -1,0 +1,44 @@
+<%= form_tag({:controller => "production_record_assistant", :action => "finish_work_update"}, :method => "post", :class => "form-horizontal") do %>
+
+    <%= hidden_field_tag :production_record_id, @production_record.id %>
+
+    <div class="form-group">
+      <%= label_tag 'production_order_label', 'Produktionsauftrag', class: 'control-label col-lg-2' %>
+
+      <div class="col-lg-10">
+        <%= label_tag 'production_order_displayName', @production_record.production_order.display_name_with_article, class: 'control-label' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag 'production_work_step_label', 'Arbeitsschritt', class: 'control-label col-lg-2' %>
+
+      <div class="col-lg-10">
+        <%= label_tag 'production_work_step_name', @production_record.production_work_step.name, class: 'control-label' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag 'start_label', 'Start', class: 'control-label col-lg-2' %>
+
+      <div class="col-lg-10">
+        <%= label_tag 'start', I18n.l(@production_record.start), class: 'control-label' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag 'quantity_label', 'Gefertigte Menge', class: 'control-label col-lg-2' %>
+
+      <div class="col-lg-10">
+        <%= text_field_tag :quantity, nil, class: 'form-control' %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="btn-group col-lg-offset-2 col-lg-10">
+        <%= submit_tag "Arbeit beenden", :name => nil, class: 'btn btn-default pull-right' %>
+      </div>
+    </div>
+
+<% end %>

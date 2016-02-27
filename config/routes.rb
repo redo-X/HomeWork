@@ -30,10 +30,14 @@ Rails.application.routes.draw do
   resources :work_plans do
     resources :work_steps, except: [:index, :show], controller: 'work_plans/work_steps'
   end
-
+  
+  get 'my_production_records' => 'production_orders/production_records#my_work', :as => :my_production_records
 
   get 'search' => 'search#index', :as => :search
+
   get 'production_record_assistant' => 'production_record_assistant#index', :as => :production_record_assistant
+  get 'production_record_assistant_finish' => 'production_record_assistant#finish_work', :as => :production_record_assistant_finish
+  post 'production_record_assistant_finish' => 'production_record_assistant#finish_work_update'
 
   get 'production_record_assistant_set_production_order' => 'production_record_assistant#production_order_select'
   get 'production_record_assistant_set_production_work_step' => 'production_record_assistant#production_work_step_select'

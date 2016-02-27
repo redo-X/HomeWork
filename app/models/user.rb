@@ -7,4 +7,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
          :rememberable, :trackable, :validatable
+
+
+  def has_started_record
+    ProductionRecord.where("user_id = ? AND finish IS NULL", id).count() > 0
+  end
+
 end

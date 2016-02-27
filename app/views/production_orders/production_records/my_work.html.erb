@@ -1,0 +1,29 @@
+<%- model_class = ProductionRecord -%>
+<div class="page-header">
+  <h1><%=t '.title' %></h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= model_class.human_attribute_name(:production_order) %></th>
+    <th><%= model_class.human_attribute_name(:production_work_step) %></th>
+    <th><%= model_class.human_attribute_name(:start) %></th>
+    <th><%= model_class.human_attribute_name(:finish) %></th>
+    <th><%= model_class.human_attribute_name(:duration_in_minutes) %></th>
+    <th><%= model_class.human_attribute_name(:quantity) %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @production_records.each do |production_record| %>
+      <tr>
+        <td><%= production_record.production_order.display_name_with_article %></td>
+        <td><%= production_record.production_work_step.name %></td>
+        <td><%= l production_record.start %></td>
+        <td><%= l production_record.finish %></td>
+        <td><%= production_record.duration_in_minutes %></td>
+        <td><%= production_record.quantity %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
