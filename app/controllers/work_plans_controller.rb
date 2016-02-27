@@ -1,6 +1,6 @@
 class WorkPlansController < ApplicationController
   before_action :set_work_plan, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
 
   # GET /work_plans
   # GET /work_plans.json

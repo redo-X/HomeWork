@@ -138,6 +138,42 @@
         </div>
     <% end %>
 
+
+    <div class="form-group">
+      <%= f.label :production_records, :class => 'control-label col-lg-2' %>
+
+      <div class="col-lg-10">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th><%= ProductionRecord.human_attribute_name(:production_work_step) %></th>
+            <th><%= ProductionRecord.human_attribute_name(:start) %></th>
+            <th><%= ProductionRecord.human_attribute_name(:finish) %></th>
+            <th><%= ProductionRecord.human_attribute_name(:is_finished) %></th>
+            <th><%= ProductionRecord.human_attribute_name(:quantity) %></th>
+            <th><%= ProductionRecord.human_attribute_name(:duration_in_minutes) %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @production_order.production_records.each do |production_record| %>
+              <tr>
+                <td><%= production_record.production_work_step.name %></td>
+                <td><%= l production_record.start %></td>
+                <td><%= l production_record.finish.presence || Time.now %></td>
+                <td><%= production_record.is_finished ? 'Ja' : 'Nein' %></td>
+                <td><%= production_record.quantity %></td>
+                <td class="text-right"><%= production_record.duration_in_minutes %></td>
+              </tr>
+          <% end %>
+              <tr>
+                <td colspan="7" class="text-right"><%= @production_order.production_records.map{|a| a.duration_in_minutes}.sum.round(2) %></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
     <div class="form-group">
       <div class="btn-group col-lg-offset-2 col-lg-10">
         <%= link_to t('.cancel', :default => t("helpers.links.cancel")), production_orders_path, :class => 'btn btn-primary' %>

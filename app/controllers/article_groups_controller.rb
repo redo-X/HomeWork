@@ -1,5 +1,9 @@
 class ArticleGroupsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_article_group, only: [:show, :edit, :update, :destroy]
+
+
 
   # GET /article_groups
   # GET /article_groups.json

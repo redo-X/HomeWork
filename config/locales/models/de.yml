@@ -9,6 +9,8 @@ de:
         work_plan: "Arbeitspläne"
         work_step: "Arbeitsschritte"
         production_work_step: "Produktionsschritte"
+        production_record: "Produktionsbuchungen"
+
         production_order_attachment: "Produktionsanhänge"
 
       attributes:
@@ -38,6 +40,16 @@ de:
           article: "Artikel"
           production_work_steps: "Produktionsschritte"
           production_order_attachments: "Produktionsänhänge"
+          production_records: "Produktionsbuchungen"
+        production_record:
+          start: "Start"
+          finish: "Ende"
+          is_finished: "Abgeschlossen"
+          duration_in_minutes: "Dauer in Minuten"
+          quantity: "Menge"
+          production_order: "Produktionsauftrag"
+          production_work_step: "Produktionsschritt"
+          user: "Mitarbeiter"
         article_group:
           code: "Nummer"
           name: "Bezeichnung"
@@ -59,6 +71,15 @@ de:
           work_steps: "Arbeitsschritte"
         work_step:
           name: "Bezeichnung"
+
+
+  production_orders:
+      production_records:
+        my_work:
+          start: "Arbeit beginnen"
+          finish: "Arbeit beenden"
+          title: "Meine Produktionsbuchungen"
+
         production_order_attachment:
           name: "Bezeichnung"
           link: "Download Link"

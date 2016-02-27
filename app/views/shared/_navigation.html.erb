@@ -11,17 +11,29 @@
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
 
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Verwalten <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to User.model_name.human.titleize, users_path %></li>
-            <li><%= link_to Article.model_name.human.titleize, articles_path %></li>
-            <li><%= link_to ArticleGroup.model_name.human.titleize, article_groups_path %></li>
-            <li><%= link_to ProductionOrder.model_name.human.titleize, production_orders_path %></li>
-            <li><%= link_to Customer.model_name.human.titleize, customers_path %></li>
-            <li><%= link_to WorkPlan.model_name.human.titleize, work_plans_path %></li>
-          </ul>
-        </li>
+        <% if current_user.present? && current_user.has_role?(:admin) %>
+
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Verwalten <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><%= link_to User.model_name.human.titleize, users_path %></li>
+                <li><%= link_to Article.model_name.human.titleize, articles_path %></li>
+                <li><%= link_to ArticleGroup.model_name.human.titleize, article_groups_path %></li>
+                <li><%= link_to ProductionOrder.model_name.human.titleize, production_orders_path %></li>
+                <li><%= link_to Customer.model_name.human.titleize, customers_path %></li>
+                <li><%= link_to WorkPlan.model_name.human.titleize, work_plans_path %></li>
+            </ul>
+          </li>
+
+        <% else %>
+            <% if current_user.present? && current_user.has_started_record %>
+              <li><%= link_to t('production_orders.production_records.my_work.finish'), production_record_assistant_finish_path %></li>
+            <% else %>
+                <li><%= link_to t('production_orders.production_records.my_work.start'), production_record_assistant_path %></li>
+            <% end %>
+
+            <li><%= link_to t('production_orders.production_records.my_work.title'), my_production_records_path %></li>
+        <% end %>
       </ul>
 
 

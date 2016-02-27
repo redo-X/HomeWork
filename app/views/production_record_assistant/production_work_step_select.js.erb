@@ -1,0 +1,19 @@
+$('#production_work_step_selection_form').remove();
+$('#current_page_container').append('<%= j render("step3") %>');
+
+
+$('#startTimePicker').datetimepicker({
+  locale: 'de'
+});
+$('#finishTimePicker').datetimepicker({
+  locale: 'de',
+  useCurrent: false
+});
+
+
+$("#startTimePicker").on("dp.change", function (e) {
+  $('#finishTimePicker').data("DateTimePicker").minDate(e.date);
+});
+$("#finishTimePicker").on("dp.change", function (e) {
+  $('#startTimePicker').data("DateTimePicker").maxDate(e.date);
+});

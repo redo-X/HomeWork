@@ -1,0 +1,22 @@
+<%= form_tag({:controller => "production_record_assistant", :action => "production_order_select"},
+             :id => 'production_order_selection_form', :method => "get", :class => "form-horizontal", remote: true) do %>
+
+    <div class="form-group">
+      <%= label_tag 'name', 'Produktionsauftrag', class: 'control-label col-lg-2' %>
+
+      <div class="col-lg-10">
+        <%= select_tag :production_order,
+                       options_from_collection_for_select(@production_orders, :id, :display_name_with_article),
+                       class: 'form-control' %>
+      </div>
+
+    </div>
+
+
+    <div class="form-group">
+      <div class="btn-group col-lg-offset-2 col-lg-10">
+        <%= submit_tag "Weiter", :name => nil, class: 'btn btn-default pull-right' %>
+      </div>
+    </div>
+
+<% end %>
