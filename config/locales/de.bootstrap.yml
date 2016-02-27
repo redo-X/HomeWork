@@ -25,3 +25,9 @@ de:
       save: "Speichern %{model}"
       new: "Neu %{model}"
       delete: "Entfernen %{model}"
+    flashes:
+      created: "%{model} wurde erfolgreich angelegt."
+      updated: "%{model} wurde erfolgreich aktualisiert."
+      destroyed: "%{model} wurde erfolgreich entfernt."
+
+  signed_in: "Eingeloggt als"
