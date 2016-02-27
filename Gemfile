@@ -40,7 +40,7 @@ gem 'time_difference', '~> 0.4.2'
 
 gem 'carrierwave'
 
-group :development, :test do # <<<< :development, not devlopment
+group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
