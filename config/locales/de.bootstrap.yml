@@ -25,3 +25,4 @@ de:
       save: "Speichern %{model}"
       new: "Neu %{model}"
       delete: "Entfernen %{model}"
+  signed_in: "Eingeloggt als"
