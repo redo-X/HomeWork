@@ -8,14 +8,14 @@ Rails.application.routes.draw do
   devise_for :users, except: :registrations
   devise_for :users, :only => [:registrations]
   as :user do
-    get 'users' => 'users/registrations#index', :as => :users
-    get 'users/new' => 'users/registrations#new', :as => :new_user
-    post 'users' => 'users/registrations#create'
-    get 'users/:id' => 'users/registrations#edit', :as => :user
+    get 'users' => 'registrations#index', :as => :users
+    get 'users/new' => 'registrations#new', :as => :new_user
+    post 'users' => 'registrations#create'
+    get 'users/:id' => 'registrations#edit', :as => :user
 
-    patch 'users/:id' => 'users/registrations#update'
-    put 'users/:id' => 'users/registrations#update'
-    delete 'users/:id' => 'users/registrations#destroy'
+    patch 'users/:id' => 'registrations#update'
+    put 'users/:id' => 'registrations#update'
+    delete 'users/:id' => 'registrations#destroy'
   end
 
 
