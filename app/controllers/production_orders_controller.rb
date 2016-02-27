@@ -33,7 +33,7 @@ class ProductionOrdersController < ApplicationController
   def create
     @production_order = ProductionOrder.new(production_order_params)
 
-    sourceWorkPlan = WorkPlan.find_by(id: params[:production_order][:work_plan_id])
+    sourceWorkPlan = WorkPlan.find(params[:production_order][:work_plan_id])
 
     if sourceWorkPlan.present?
       sourceWorkPlan.work_steps.each do |ws|
@@ -72,10 +72,30 @@ class ProductionOrdersController < ApplicationController
   # DELETE /production_orders/1.json
   def destroy
     @production_order.production_work_steps.destroy_all
+    @production_order.production_order_attachments.destroy_all
     @production_order.destroy
     respond_to do |format|
       format.html { redirect_to production_orders_path, notice: 'Production order was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  # Add and remove favorite production_orders
+  # for current_user
+  def favorite
+    @production_order = ProductionOrder.find(params[:id])
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @production_order
+      redirect_to :back, notice: "You favorited #{@production_order.number}"
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@production_order)
+      redirect_to :back, notice: "Unfavorited #{@production_order.number}"
+
+    else
+      # Type missing, nothing happens
+      redirect_to :back, notice: 'Nothing happened.'
     end
   end
 
@@ -84,6 +104,7 @@ class ProductionOrdersController < ApplicationController
     def set_production_order
       @production_order = ProductionOrder.find(params[:id])
       @production_work_steps = @production_order.production_work_steps
+      @production_order_attachments = @production_order.production_order_attachments
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

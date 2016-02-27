@@ -50,7 +50,7 @@
       <div class="col-lg-5">
         <div class="input-group">
           <span class="input-group-addon" id="customer_fax_addon"><span class="glyphicon glyphicon-print" ></span></span>
-          <%= f.text_field :phone,
+          <%= f.text_field :fax,
                            :class => 'form-control',
                            :placeholder => 'Fax',
                            'aria-describedby'=>'customer_fax_addon' %>
@@ -62,7 +62,7 @@
       <div class="col-lg-offset-2 col-lg-5">
         <div class="input-group">
           <span class="input-group-addon" id="customer_mail_addon"><span class="glyphicon glyphicon-envelope" ></span></span>
-          <%= f.text_field :phone,
+          <%= f.text_field :mail,
                            :class => 'form-control',
                            :placeholder => 'E-Mail',
                            'aria-describedby'=>'customer_mail_addon' %>
@@ -71,7 +71,7 @@
       <div class="col-lg-5">
         <div class="input-group">
           <span class="input-group-addon" id="customer_web_addon"><span class="glyphicon glyphicon-globe" ></span></span>
-          <%= f.text_field :phone,
+          <%= f.text_field :mail, #muss noch aktualisiert werden. Migration fehlt auch noch
                            :class => 'form-control',
                            :placeholder => 'URL',
                            'aria-describedby'=>'customer_web_addon' %>
@@ -84,7 +84,7 @@
       <div class="col-lg-offset-2 col-lg-10">
         <div class="input-group">
           <span class="input-group-addon" id="customer_contactperson_addon"><span class="glyphicon glyphicon-user" ></span></span>
-          <%= f.text_field :phone,
+          <%= f.text_field :contactperson,
                            :class => 'form-control',
                            :placeholder => 'Kontaktperson',
                            'aria-describedby'=>'customer_contactperson_addon' %>

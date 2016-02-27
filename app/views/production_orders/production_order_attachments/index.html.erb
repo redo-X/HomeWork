@@ -1,0 +1,25 @@
+<%- model_class = ProductionOrderAttachment -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= model_class.human_attribute_name(:name) %></th>
+    <th><%= model_class.human_attribute_name(:link) %></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @production_order_attachment.each do |productionOrderAttachment| %>
+      <tr>
+        <td><%= productionOrderAttachment.name %></td>
+        <td><%= link_to "Download Attachement", productionOrderAttachment.attachment_url %></td>
+        <td><%= button_to "Delete",  productionOrderAttachment, method: :delete, class: "btn btn-xs btn-danger", confirm: "Are you sure that you wish to delete #{productionOrderAttachment.name}?" %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to ('<span class="glyphicon glyphicon-plus"></span>').html_safe + ' ' + t('.new', :default => t("helpers.links.new")),
+            new_production_order_attachment_path,
+            :class => 'btn btn-default' %>

@@ -31,7 +31,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to customers_path, notice: 'Customer was successfully created.' }
+        format.html { redirect_to edit_customer_path(@customer), notice: 'Customer was successfully created.' }
         format.json { render :show, status: :created, location: @customer }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to customers_path, notice: 'Customer was successfully updated.' }
+        format.html { redirect_to edit_customer_path, notice: 'Customer was successfully updated.' }
         format.json { render :show, status: :ok, location: @customer }
       else
         format.html { render :edit }
@@ -72,6 +72,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:code, :name1, :name2, :phone, :fax, :mail, :contactperson)
+      params.require(:customer).permit(:code, :name1, :name2, :phone, :fax, :mail, :web, :contactperson)
     end
 end

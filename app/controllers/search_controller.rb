@@ -39,5 +39,8 @@ class SearchController < ApplicationController
     searchForWorkPlans
   end
 
+  def availableSearchTerms
+    { 'Artikel' => 1, 'Produktionsaufträge' => 2  }
+  end
 
 end

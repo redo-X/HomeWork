@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :new, :create, :edit, :destroy, :update]
   resources :production_orders, only: [:index, :new, :create, :edit, :destroy, :update] do
     resources :production_work_steps, except: [:index, :show], controller: 'production_orders/production_work_steps'
+    resources :production_order_attachments, except: [:index, :show], controller: 'production_orders/production_order_attachments'
     resources :production_records, only: [:index], controller: 'production_orders/production_records'
   end
   resources :article_groups, only: [:index, :new, :create, :edit, :destroy, :update]
@@ -30,7 +31,13 @@ Rails.application.routes.draw do
   resources :work_plans do
     resources :work_steps, except: [:index, :show], controller: 'work_plans/work_steps'
   end
-  
+
+  resources :production_orders do
+    put :favorite, on: :member
+  end
+
+
+
   get 'my_production_records' => 'production_orders/production_records#my_work', :as => :my_production_records
 
   get 'search' => 'search#index', :as => :search

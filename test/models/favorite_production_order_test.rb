@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ProductionRecordTest < ActiveSupport::TestCase
+class FavoriteProductionOrderTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
