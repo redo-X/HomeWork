@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to users_path, notice: t('helpers.flashes.created', :model => User.model_name.human.titleize) }
+        format.html { redirect_to users_path, notice: 'user created' }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -30,19 +30,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
 
+
+
   def update
     respond_to do |format|
 
       if user_params[:password].empty?
         if @user.update_without_password(user_params)
-          format.html { redirect_to users_path, notice: t('helpers.flashes.updated', :model => User.model_name.human.titleize) }
+          format.html { redirect_to users_path, notice: 'user updated' }
         else
           format.html { render :edit }
         end
       else
         if user_params[:password] == user_params[:password_confirmation]
           if @user.update(user_params)
-            format.html { redirect_to root_path, notice: t('helpers.flashes.updated', :model => User.model_name.human.titleize) }
+            format.html { redirect_to root_path, notice: 'User updated' }
           else
             format.html { render :edit }
           end
@@ -61,7 +63,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: t('helpers.flashes.destroyed', :model => User.model_name.human.titleize) }
+      format.html { redirect_to users_url, notice: 'user destroyed' }
       format.json { head :no_content }
     end
   end
