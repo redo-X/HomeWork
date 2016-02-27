@@ -9,10 +9,10 @@ RSpec.describe 'ArticleCreations','as a registered "user"' do
       fill_in "user_email", :with => user.email
       fill_in "user_password", :with => user.password
       click_button "Anmelden"
-      current_path.should eq(welcome_index_path)
+      current_path.should eq(root_path)
       visit articles_path
       current_path.should eq(articles_path)
-      click_button('Neu')
+      click_link('123')
     end
   end
 end
