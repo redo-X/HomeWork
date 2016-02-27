@@ -9,6 +9,7 @@ class ProductionOrder < ActiveRecord::Base
 
   has_many :production_work_steps, inverse_of: :production_order
   has_many :production_order_attachments, inverse_of: :production_order
+  has_many :production_records, inverse_of: :production_order
 
   validates :number, presence: true, uniqueness: true
   validates :description, presence: false
