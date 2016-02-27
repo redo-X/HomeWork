@@ -15,11 +15,14 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= link_to article.code, edit_article_path(article) %></td>
+        <td><%= article.code %></td>
         <td><%= article.name %></td>
         <td><%= article.version %></td>
         <td><%= article.article_group.try(:display_name) %></td>
         <td>
+          <%= link_to ("<span class=\"glyphicon glyphicon-pencil\" ></span>").html_safe,
+                      edit_article_path(article),
+                      :class => 'btn btn-xs btn-info'%>
           <%= link_to ("<span class=\"glyphicon glyphicon-trash\" ></span>").html_safe,
                       article_path(article),
                       :method => :delete,
@@ -33,4 +36,4 @@
 
 <%= link_to ('<span class="glyphicon glyphicon-plus"></span>').html_safe + ' ' + t('.new', :default => t("helpers.links.new")),
             new_article_path,
-            :class => 'btn btn-default' %>
+            :class => 'btn btn-default'%>

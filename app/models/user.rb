@@ -8,9 +8,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :rememberable, :trackable, :validatable
 
-
-  def has_started_record
-    ProductionRecord.where("user_id = ? AND finish IS NULL", id).count() > 0
-  end
-
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 end

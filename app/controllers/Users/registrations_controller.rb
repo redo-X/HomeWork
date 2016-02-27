@@ -3,7 +3,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   prepend_before_filter :require_no_authentication, only: []
 
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -20,9 +20,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if @user.save
         format.html { redirect_to users_path, notice: 'Benutzer wurde erfolgreich angelegt.' }
       else
-        clean_up_passwords resource
-        set_minimum_password_length
-        respond_with resource
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+        #clean_up_passwords resource
+        #set_minimum_password_length
+        #respond_with resource
       end
     end
   end
@@ -54,6 +56,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     end
 
+  end
+
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
