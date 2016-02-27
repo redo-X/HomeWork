@@ -14,19 +14,19 @@
 ActiveRecord::Schema.define(version: 20160220185234) do
 
   create_table "article_groups", force: :cascade do |t|
-    t.string   "code"
+    t.string   "code",       null: false
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "articles", force: :cascade do |t|
-    t.string   "code"
-    t.string   "name"
-    t.string   "version"
+    t.string   "code",             null: false
+    t.string   "name",             null: false
+    t.string   "version",          null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "article_group_id"
+    t.integer  "article_group_id", null: false
   end
 
   add_index "articles", ["article_group_id"], name: "index_articles_on_article_group_id"
@@ -62,17 +62,17 @@ ActiveRecord::Schema.define(version: 20160220185234) do
   add_index "production_order_attachments", ["production_order_id"], name: "index_production_order_attachments_on_production_order_id"
 
   create_table "production_orders", force: :cascade do |t|
-    t.integer  "number"
+    t.integer  "number",           null: false
     t.string   "description"
-    t.integer  "quantity"
+    t.integer  "quantity",         null: false
     t.integer  "pending_quantity"
     t.date     "release_date"
-    t.date     "due_date"
+    t.date     "due_date",         null: false
     t.boolean  "isCompleted"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "article_id"
-    t.integer  "customer_id"
+    t.integer  "article_id",       null: false
+    t.integer  "customer_id",      null: false
     t.integer  "work_plan_id"
     t.integer  "user_id"
   end
@@ -81,11 +81,26 @@ ActiveRecord::Schema.define(version: 20160220185234) do
   add_index "production_orders", ["customer_id"], name: "index_production_orders_on_customer_id"
   add_index "production_orders", ["work_plan_id"], name: "index_production_orders_on_work_plan_id"
 
+  create_table "production_records", force: :cascade do |t|
+    t.datetime "start",                   null: false
+    t.datetime "finish"
+    t.integer  "quantity"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "production_order_id",     null: false
+    t.integer  "production_work_step_id", null: false
+    t.integer  "user_id",                 null: false
+  end
+
+  add_index "production_records", ["production_order_id"], name: "index_production_records_on_production_order_id"
+  add_index "production_records", ["production_work_step_id"], name: "index_production_records_on_production_work_step_id"
+  add_index "production_records", ["user_id"], name: "index_production_records_on_user_id"
+
   create_table "production_work_steps", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",                null: false
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.integer  "production_order_id"
+    t.integer  "production_order_id", null: false
   end
 
   add_index "production_work_steps", ["production_order_id"], name: "index_production_work_steps_on_production_order_id"
@@ -129,7 +144,7 @@ ActiveRecord::Schema.define(version: 20160220185234) do
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
 
   create_table "work_plans", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        null: false
     t.string   "description"
     t.boolean  "is_standard"
     t.datetime "created_at",  null: false
@@ -137,7 +152,7 @@ ActiveRecord::Schema.define(version: 20160220185234) do
   end
 
   create_table "work_steps", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",         null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "work_plan_id"
