@@ -1,5 +1,4 @@
 #PROJEKTBESCHREIBUNG
-====================
 
 Das Projekt ist ein reales Projekt der Firma rokatec Kabelkonfektion GmbH, wo ich (David Melcher)
 seit zwei Jahren als Anwendungsentwickler arbeite.
@@ -14,7 +13,6 @@ sodass die Datenbereitstellung für das Web-Portal automatisiert erfolgt.
 
 
 #KERNFUNKTION DES PROJEKTS
--------------------------
 Die Kernfunktion bildet die Dokumentation der Arbeitszeit, die ein Mitarbeiter an einem Produktionsauftrag arbeitet.
 Um den Mitarbeitern die Erfassung zu erleichtern, hat jeder Produktionsauftrag Anhänge (Dokumente für die Produktion [Stücklisten, Zeichnungen, ...]),
 einen Arbeitsplan, usw., welche zusätzlich durch einen Assistenten durchgeführt wird.
@@ -22,14 +20,12 @@ einen Arbeitsplan, usw., welche zusätzlich durch einen Assistenten durchgeführ
 # WICHTIG: Wir dürfen leider nicht die Dokumente öffentlich hochladen, weil wir verpflichtet sind, die Geheimhaltung der Kunden zu wahren. #
 
 #USER-STORIES
-=============
 •	Backend und Frontend sollen durch eine Anmeldung getrennt werden
 •	Jeder Benutzer hat eine Rolle (Administrator oder Nutzer)
 •	Mitarbeiter der Verwaltung bekommen die Rolle Administrator und die ausführenden Kräfte die Rolle Nutzer zugewiesen
 
 
 ##FRONTEND
---------
 *   Der Mitarbeiter soll sich von Zuhause aus mit vorgegebenen Anmeldeinformationen in das Web-Portal anmelden können
 *   Der Mitarbeiter soll seine Produktionsbuchungen sich ansehen können
 *   Der Mitarbeiter soll in der Lage sein, seine Arbeitszeit möglichst einfach im Portal erfassen zu können
@@ -37,7 +33,6 @@ einen Arbeitsplan, usw., welche zusätzlich durch einen Assistenten durchgeführ
 
 
 ##BACKEND
----------
 *   Der Mitarbeiter soll Kunden anlegen, aktualisieren und entfernen können
 *   Der Mitarbeiter soll Artikelgruppen anlegen, aktualisieren und entfernen können
 *   Der Mitarbeiter soll Artikel anlegen, aktualisieren und entfernen können
