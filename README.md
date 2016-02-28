@@ -50,6 +50,8 @@ einen Arbeitsplan, usw., welche zusätzlich durch einen Assistenten durchgeführ
 
 
 #Benutzen der Anwendung
+##[Link zu Anwendung](https://arcane-mesa-34252.herokuapp.com)
+
 ##Mitarbeiter im Backoffice
 *   Anmelden als "Administrator" (admin@system.de, ...) siehe seeds.rb
 *   In der Navigation Verwalten->XXX können die Listen aufgerufen werden, um CRUD-Funktionalitäten durchzuführen
