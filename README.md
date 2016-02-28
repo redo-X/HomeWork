@@ -47,3 +47,20 @@ einen Arbeitsplan, usw., welche zusätzlich durch einen Assistenten durchgeführ
     *   Der Mitarbeiter soll einem PA die Arbeitsschritte auch manuell hinzufügen und entfernen können
     *   Der Mitarbeiter soll die Buchungen, die bereits in einem PA eingegangen sind, sehen können und dessen Gesamtzeit einsehen können
     *   Der Mitarbeiter soll nach Datensätzen suchen können, um Produktionsaufträge, Artikel oder Arbeitsplänen schneller finden zu können; Die Suche soll im Nachhinein leicht erweiterbar bleiben; eine Volltextsuche ist nicht gefordert
+
+
+#Benutzen der Anwendung
+##Mitarbeiter im Backoffice
+*   Anmelden als "Administrator" (admin@system.de, ...) siehe seeds.rb
+*   In der Navigation Verwalten->XXX können die Listen aufgerufen werden, um CRUD-Funktionalitäten durchzuführen
+*   Die Listen sind immer gleich aufgebaut
+    *   Der Stift öffnet die Bearbeitungsansicht
+    *   Die Mülltonne entfernt das Element
+    *   Manche Elemente haben zusätzlich zu er Bearbeiten-Ansicht eine normale "Read-Only"-Ansicht, welche mittels Mausklick auf die Nummer geöffnet wird
+
+##Mitarbeiter als ausführende Kraft
+*   Anmelden als "Nutzer" (user@system.de, ...) siehe seeds.rb
+*   In der Navigation werden zwei Links angezeigt "Arbeit beginnen/Arbeit beenden" und "Meine Produktionsbuchungen"
+    *   Der Link "Arbeit beginnen" führt den Nutzer in den Assistenten, um den Buchungssatz anzulegen
+    *   Um die Arbeit zu beenden, muss der Nutzer den Link "Arbeit beenden" betätigen. (Hinweis: die Links wechseln sich ab)
+    *   Um die bereits erledigten Buchungen einzusehen, kann der Nutzer auf den Link "Meine Produktionsbuchungen" klicken
