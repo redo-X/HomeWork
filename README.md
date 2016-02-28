@@ -17,7 +17,7 @@ Die Kernfunktion bildet die Dokumentation der Arbeitszeit, die ein Mitarbeiter a
 Um den Mitarbeitern die Erfassung zu erleichtern, hat jeder Produktionsauftrag Anhänge (Dokumente für die Produktion [Stücklisten, Zeichnungen, ...]),
 einen Arbeitsplan, usw., welche zusätzlich durch einen Assistenten durchgeführt wird.
 
-# WICHTIG: Wir dürfen leider nicht die Dokumente öffentlich hochladen, weil wir verpflichtet sind, die Geheimhaltung der Kunden zu wahren. #
+### WICHTIG: Wir dürfen leider nicht die Dokumente öffentlich hochladen, weil wir verpflichtet sind, die Geheimhaltung der Kunden zu wahren.
 
 #USER-STORIES
 •	Backend und Frontend sollen durch eine Anmeldung getrennt werden
