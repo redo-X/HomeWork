@@ -6,7 +6,7 @@ RSpec.describe "AdminLogins", type: :request do
     fill_in "user_email", :with => "admin@system.de"
     fill_in "user_password", :with => "geheim"
     click_button "Anmelden"
-    current_path.should eq(new_user_session_path)
+    current_path.should eq(welcome_index_path)
   end
 end
 
