@@ -12,6 +12,15 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validate :check_role
+
+
+  def check_role
+    if not new_record? and not role.presence
+      errors.add(:role, "muss ausgewählt werden")
+    end
+  end
+
 
   def has_started_record
     ProductionRecord.where("user_id = ? AND finish IS NULL", id).count() > 0
@@ -38,5 +47,9 @@ class User < ActiveRecord::Base
 
       roles << role
     end
+  end
+
+  def is_system_admin
+    email == 'admin@system.de'
   end
 end

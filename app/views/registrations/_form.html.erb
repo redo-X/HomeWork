@@ -65,11 +65,13 @@
         <%= link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn btn-primary' %>
         <%= f.submit nil, :class => 'btn btn-primary btn-success' %>
 
-        <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                    @user,
-                    :method => :delete,
-                    :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
-                    :class => 'btn btn-primary btn-danger' %>
+        <% if not @user.is_system_admin %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      @user,
+                      :method => :delete,
+                      :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                      :class => 'btn btn-primary btn-danger' %>
+        <% end %>
       </div>
     </div>
 <% end %>

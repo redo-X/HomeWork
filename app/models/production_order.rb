@@ -15,13 +15,16 @@ class ProductionOrder < ActiveRecord::Base
   validates :description, presence: false
 
   validates :article, presence: true
+  validates :customer, presence: true
+  validates :work_plan, presence: true
 
   validates :release_date, presence: true
   validates :due_date, presence: true
+  validates :quantity, presence: true
 
-  validate :checkDueDate
+  validate :check_due_date
 
-  def checkDueDate
+  def check_due_date
     if due_date < release_date
       errors.add(:due_date, "muss größer als das Freigabedatum sein")
     end

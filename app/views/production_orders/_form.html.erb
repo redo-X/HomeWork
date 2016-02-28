@@ -139,7 +139,8 @@
     <% end %>
 
 
-    <div class="form-group">
+    <% if not @production_order.new_record? %>
+      <div class="form-group">
       <%= f.label :production_records, :class => 'control-label col-lg-2' %>
 
       <div class="col-lg-10">
@@ -174,7 +175,7 @@
         </table>
       </div>
     </div>
-
+    <% end %>
 
     <div class="form-group">
       <div class="btn-group col-lg-offset-2 col-lg-10">

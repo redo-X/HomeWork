@@ -20,7 +20,7 @@
         <td><%= user.last_name %></td>
         <td><%= user.role.try(:name) %></td>
         <td>
-          <% if not user.email == 'admin@system.de' %>
+          <% if not user.is_system_admin %>
             <%= link_to ("<span class=\"glyphicon glyphicon-pencil\" ></span>").html_safe,
                         user_path(user),
                         :class => 'btn btn-xs btn-info'%>
@@ -38,4 +38,5 @@
 
 <%= link_to ('<span class="glyphicon glyphicon-plus"></span>').html_safe + ' ' + t('.new', :default => t("helpers.links.new")),
             new_user_path,
-            :class => 'btn btn-default' %>
+            :class => 'btn btn-default',
+            :id => 'buttonNew' %>

@@ -1,8 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
-  load_and_authorize_resource :class => User
+  load_and_authorize_resource :user
 
   prepend_before_action :authenticate_scope!
-
   prepend_before_filter :require_no_authentication, only: []
 
   before_action :set_user, only: [:edit, :update, :destroy]
@@ -15,12 +14,20 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.new
   end
 
+  def edit
+    if @user.is_system_admin
+      redirect_to users_path, alert: "System-Admin kann nicht geändert werden"
+    end
+  end
+
   def create
     @user = User.new(user_params)
 
-    selected_role = Role.find(params[:user][:role_id])
+    if params[:user][:role_id].presence
+      selected_role = Role.find(params[:user][:role_id])
 
-    @user.set_new_role(selected_role)
+      @user.set_new_role(selected_role)
+    end
 
     respond_to do |format|
       if @user.save

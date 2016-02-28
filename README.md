@@ -61,7 +61,7 @@ einen Arbeitsplan, usw., welche zusätzlich durch einen Assistenten durchgeführ
     *   Manche Elemente haben zusätzlich zu er Bearbeiten-Ansicht eine normale "Read-Only"-Ansicht, welche mittels Mausklick auf die Nummer geöffnet wird
 
 ##Mitarbeiter als ausführende Kraft
-*   Anmelden als "Nutzer" (user@system.de, ...) siehe seeds.rb
+*   Anmelden als "Nutzer" (dmelcher@system.de, mehmen@system.de, user@system.de) siehe seeds.rb
 *   In der Navigation werden zwei Links angezeigt "Arbeit beginnen/Arbeit beenden" und "Meine Produktionsbuchungen"
     *   Der Link "Arbeit beginnen" führt den Nutzer in den Assistenten, um den Buchungssatz anzulegen
     *   Um die Arbeit zu beenden, muss der Nutzer den Link "Arbeit beenden" betätigen. (Hinweis: die Links wechseln sich ab)
