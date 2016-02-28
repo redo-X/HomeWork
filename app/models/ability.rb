@@ -3,7 +3,12 @@ class Ability
 
   def initialize(user)
 
-    can :manage, :all
+    if user.has_role? :admin
+      can :manage, :all
+    else
+      can :manage, ProductionRecord
+    end
+
 
     # Define abilities for the passed in user here. For example:
     #

@@ -20,7 +20,7 @@
         <td><%= production_record.production_order.display_name_with_article %></td>
         <td><%= production_record.production_work_step.name %></td>
         <td><%= l production_record.start %></td>
-        <td><%= l production_record.finish %></td>
+        <td><%= production_record.finish.presence ? l(production_record.finish) : ''  %></td>
         <td><%= production_record.duration_in_minutes %></td>
         <td><%= production_record.quantity %></td>
       </tr>

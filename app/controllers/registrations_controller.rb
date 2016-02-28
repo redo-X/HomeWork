@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+  load_and_authorize_resource
+
   prepend_before_action :authenticate_scope!
 
   prepend_before_filter :require_no_authentication, only: []
@@ -16,9 +18,13 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
 
+    selected_role = Role.find(params[:user][:role_id])
+
+    @user.set_new_role(selected_role)
+
     respond_to do |format|
       if @user.save
-        format.html { redirect_to users_path, notice: 'Benutzer wurde erfolgreich angelegt.' }
+        format.html { redirect_to users_path, notice: t('helpers.flashes.created', :model => User.model_name.human.titleize) }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -30,16 +36,20 @@ class RegistrationsController < Devise::RegistrationsController
   def update
     respond_to do |format|
 
+      selected_role = Role.find(params[:user][:role_id])
+
+      @user.set_new_role(selected_role)
+
       if user_params[:password].empty?
         if @user.update_without_password(user_params)
-          format.html { redirect_to users_path, notice: 'Benutzer wurde erfolgreich aktualisiert.' }
+          format.html { redirect_to users_path, notice: t('helpers.flashes.updated', :model => User.model_name.human.titleize) }
         else
           format.html { render :edit }
         end
       else
         if user_params[:password] == user_params[:password_confirmation]
           if @user.update(user_params)
-            format.html { redirect_to root, notice: 'Benutzer wurde erfolgreich aktualisiert, Sie müssen sich neu anmelden.' }
+            format.html { redirect_to users_path, notice: t('helpers.flashes.updated', :model => User.model_name.human.titleize) }
           else
             format.html { render :edit }
           end
@@ -58,7 +68,7 @@ class RegistrationsController < Devise::RegistrationsController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: t('helpers.flashes.destroyed', :model => User.model_name.human.titleize) }
       format.json { head :no_content }
     end
   end

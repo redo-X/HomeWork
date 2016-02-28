@@ -33,19 +33,22 @@ class ProductionOrdersController < ApplicationController
   def create
     @production_order = ProductionOrder.new(production_order_params)
 
-    sourceWorkPlan = WorkPlan.find(params[:production_order][:work_plan_id])
+    if params[:production_order][:work_plan_id].presence
+      sourceWorkPlan = WorkPlan.find(params[:production_order][:work_plan_id])
 
-    if sourceWorkPlan.present?
-      sourceWorkPlan.work_steps.each do |ws|
-        newWorkStep = ProductionWorkStep.new
-        newWorkStep.name = ws.name
-        @production_order.production_work_steps << newWorkStep
+      if sourceWorkPlan.present?
+        sourceWorkPlan.work_steps.each do |ws|
+          newWorkStep = ProductionWorkStep.new
+          newWorkStep.name = ws.name
+          @production_order.production_work_steps << newWorkStep
+        end
       end
     end
 
+
     respond_to do |format|
       if @production_order.save
-        format.html { redirect_to edit_production_order_path(@production_order), notice: 'Production order was successfully created.' }
+        format.html { redirect_to edit_production_order_path(@production_order), notice: t('helpers.flashes.created', :model => ProductionOrder.model_name.human.titleize) }
         format.json { render :show, status: :created, location: @production_order }
       else
         format.html { render :new }
@@ -59,7 +62,7 @@ class ProductionOrdersController < ApplicationController
   def update
     respond_to do |format|
       if @production_order.update(production_order_params)
-        format.html { redirect_to edit_production_order_path(@production_order), notice: 'Production order was successfully updated.' }
+        format.html { redirect_to edit_production_order_path(@production_order), notice: t('helpers.flashes.updated', :model => ProductionOrder.model_name.human.titleize) }
         format.json { render :show, status: :ok, location: @production_order }
       else
         format.html { render :edit }
@@ -75,7 +78,7 @@ class ProductionOrdersController < ApplicationController
     @production_order.production_order_attachments.destroy_all
     @production_order.destroy
     respond_to do |format|
-      format.html { redirect_to production_orders_path, notice: 'Production order was successfully destroyed.' }
+      format.html { redirect_to production_orders_path, notice: t('helpers.flashes.destroyed', :model => ProductionOrder.model_name.human.titleize) }
       format.json { head :no_content }
     end
   end
@@ -87,15 +90,15 @@ class ProductionOrdersController < ApplicationController
     type = params[:type]
     if type == "favorite"
       current_user.favorites << @production_order
-      redirect_to :back, notice: "You favorited #{@production_order.number}"
+      redirect_to :back, notice: "#{@production_order.number} favorisiert"
 
     elsif type == "unfavorite"
       current_user.favorites.delete(@production_order)
-      redirect_to :back, notice: "Unfavorited #{@production_order.number}"
+      redirect_to :back, notice: "#{@production_order.number} entfavorisiert"
 
     else
       # Type missing, nothing happens
-      redirect_to :back, notice: 'Nothing happened.'
+      redirect_to :back
     end
   end
 

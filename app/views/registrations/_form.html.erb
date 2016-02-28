@@ -18,30 +18,59 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, class: "form-control" %>
-
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name, class: "form-control" %>
+      <%= f.label :email, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :email, autofocus: true, :class => 'form-control' %>
+      </div>
     </div>
 
+
     <div class="form-group">
-      <%= f.label :password %> <i>(<%= t('.leaveBlankIfUnchanged', :default => "leave blank if you don't want to change it") %>)</i><br />
-      <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, class: "form-control"  %>
+      <%= f.label :first_name, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-4">
+        <%= f.text_field :first_name, :class => 'form-control' %>
+      </div>
+
+      <%= f.label :last_name, :class => 'control-label col-lg-1' %>
+      <div class="col-lg-5">
+        <%= f.text_field :last_name, :class => 'form-control' %>
+      </div>
     </div>
 
-    <% if @user.new_record? %>
-      <%= f.submit t('.sign_up', :default => "Anlegen"), class: "btn btn-primary" %>
-    <% else %>
-        <%= f.submit t('.update', :default => "Aktualisieren"), class: "btn btn-primary" %>
-    <% end %>
+
+    <div class="form-group">
+      <%= f.label :role, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.collection_select :role_id, Role.all, :id, :name, {:prompt => true}, {:class => 'form-control'} %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label :password, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.password_field :password, :autocomplete => "off", :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.password_field :password_confirmation, :autocomplete => "off", :class => 'form-control' %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="btn-group col-lg-offset-2 col-lg-10">
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn btn-primary' %>
+        <%= f.submit nil, :class => 'btn btn-primary btn-success' %>
+
+        <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                    @user,
+                    :method => :delete,
+                    :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                    :class => 'btn btn-primary btn-danger' %>
+      </div>
+    </div>
 <% end %>
 

@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  has_many :productionorders, inverse_of: :article
+  has_many :production_orders, inverse_of: :article
   belongs_to :article_group, inverse_of: :articles
 
 
@@ -7,6 +7,10 @@ class Article < ActiveRecord::Base
   validates :name, presence: true
   validates :article_group, presence: true
   validates :version, presence: true, uniqueness: {scope: [:code, :version]}
+
+  def self.harnesses
+    joins(:article_group).where('article_groups.code = ?', 500)
+  end
 
   def display_name
     "#{code} - #{name}"

@@ -42,10 +42,12 @@ de:
           current_sign_in_at: "Angemeldet am"
           email: "E-Mail"
           password: "Passwort"
+          password_confirmation: "Passwort Wiederholung"
           first_name: "Vorname"
           last_name: "Nachname"
           last_sign_in_at: "Zuletzt angemeldet am"
           remember_me: "Angemeldet bleiben"
+          role: "Rolle"
         production_order:
           number: "Nummer"
           description: "Beschreibung"
@@ -95,7 +97,11 @@ de:
           name: "Bezeichnung"
           link: "Download Link"
 
-
+  production_record_assistant:
+    finish_work_update:
+      record_successfully_closed: "Produktionsbuchung erfolgreich abgeschlossen"
+      no_record_started: "Keine Produktionsbuchung gestartet"
+      record_tracking_already_started: "Produktionsbuchung wurde bereits gestartet"
   production_orders:
       production_records:
         my_work:

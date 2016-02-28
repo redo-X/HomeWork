@@ -8,6 +8,7 @@
       <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%= model_class.human_attribute_name(:first_name) %></th>
       <th><%= model_class.human_attribute_name(:last_name) %></th>
+      <th><%= model_class.human_attribute_name(:role) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -17,8 +18,9 @@
         <td><%= link_to user.email, user_path(user) %></td>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
+        <td><%= user.role.try(:name) %></td>
         <td>
-          <% if not user.has_role? :admin %>
+          <% if not user.email == 'admin@system.de' %>
             <%= link_to ("<span class=\"glyphicon glyphicon-pencil\" ></span>").html_safe,
                         user_path(user),
                         :class => 'btn btn-xs btn-info'%>

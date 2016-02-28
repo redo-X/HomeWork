@@ -3,7 +3,7 @@ class ProductionRecordAssistantController < ApplicationController
   def index
 
     if current_user.has_started_record
-      redirect_to root_path, alert: 'Worktracking already started'
+      redirect_to my_production_records_path, alert: t('.record_tracking_already_started')
     end
 
     @production_orders = ProductionOrder.joins(:article).all
@@ -45,7 +45,7 @@ class ProductionRecordAssistantController < ApplicationController
 
     respond_to do |format|
       if production_record.save
-        format.html { redirect_to root_path, notice: 'Production record was successfully created.' }
+        format.html { redirect_to my_production_records_path, notice: t('helpers.flashes.created', :model => ProductionRecord.model_name.human.titleize) }
       end
     end
   end
@@ -55,7 +55,7 @@ class ProductionRecordAssistantController < ApplicationController
     @production_record = ProductionRecord.where("user_id = ? AND finish IS NULL", current_user.id).first()
 
     if @production_record.present? == false
-      redirect_to root_path, alert: 'No production record started'
+      redirect_to my_production_records_path, alert: t('.no_record_started')
     end
 
   end
@@ -86,7 +86,7 @@ class ProductionRecordAssistantController < ApplicationController
     @production_record.quantity = params[:quantity]
 
     if @production_record.save
-      redirect_to root_path, notice: 'Production record was successfully closed.'
+      redirect_to my_production_records_path, notice: t('.record_successfully_closed')
     end
   end
 

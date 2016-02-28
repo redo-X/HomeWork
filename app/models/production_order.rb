@@ -1,6 +1,6 @@
 class ProductionOrder < ActiveRecord::Base
-  belongs_to :article, inverse_of: :productionorders
-  belongs_to :customer, inverse_of: :productionorders
+  belongs_to :article, inverse_of: :production_orders
+  belongs_to :customer, inverse_of: :production_orders
   belongs_to :work_plan, inverse_of: :production_orders
 
   belongs_to :user
@@ -29,5 +29,17 @@ class ProductionOrder < ActiveRecord::Base
 
   def display_name
     "#{number}"
+  end
+  def display_name_with_article
+    "#{number}: #{article.display_name}"
+  end
+
+  def set_work_plan(workPlan)
+    workPlan.work_steps.each do |ws|
+      newWorkStep = ProductionWorkStep.new
+      newWorkStep.name = ws.name
+
+      production_work_steps << newWorkStep
+    end
   end
 end

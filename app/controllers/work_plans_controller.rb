@@ -8,19 +8,16 @@ class WorkPlansController < ApplicationController
     @work_plans = WorkPlan.all
   end
 
-  # GET /work_plans/1
-  # GET /work_plans/1.json
-  def show
-    @work_steps = @work_plan.work_steps
-  end
 
   # GET /work_plans/new
   def new
     @work_plan = WorkPlan.new
+    @work_steps = @work_plan.work_steps
   end
 
   # GET /work_plans/1/edit
   def edit
+    @work_steps = @work_plan.work_steps
   end
 
   # POST /work_plans
@@ -41,7 +38,7 @@ class WorkPlansController < ApplicationController
 
     respond_to do |format|
       if @work_plan.save
-        format.html { redirect_to @work_plan, notice: 'Work plan was successfully created.' }
+        format.html { redirect_to edit_work_plan_path(@work_plan), notice: t('helpers.flashes.created', :model => WorkPlan.model_name.human.titleize) }
         format.json { render :show, status: :created, location: @work_plan }
       else
         format.html { render :new }
@@ -55,7 +52,7 @@ class WorkPlansController < ApplicationController
   def update
     respond_to do |format|
       if @work_plan.update(work_plan_params)
-        format.html { redirect_to @work_plan, notice: 'Work plan was successfully updated.' }
+        format.html { redirect_to edit_work_plan_path(@work_plan), notice: t('helpers.flashes.updated', :model => WorkPlan.model_name.human.titleize) }
         format.json { render :show, status: :ok, location: @work_plan }
       else
         format.html { render :edit }
@@ -70,7 +67,7 @@ class WorkPlansController < ApplicationController
     @work_plan.work_steps.destroy_all
     @work_plan.destroy
     respond_to do |format|
-      format.html { redirect_to work_plans_url, notice: 'Work plan was successfully destroyed.' }
+      format.html { redirect_to work_plans_url, notice: t('helpers.flashes.destroyed', :model => WorkPlan.model_name.human.titleize) }
       format.json { head :no_content }
     end
   end
