@@ -1,4 +1,5 @@
 PROJEKTBESCHREIBUNG
+
 Das Projekt ist ein reales Projekt der Firma rokatec Kabelkonfektion GmbH, wo ich (David Melcher) seit zwei Jahren als Anwendungsentwickler arbeite. Für die Dokumentation existiert in der Firma eine Betriebsdatenerfassung, die von den Mitarbeitern mit Daten gefüllt wird. Dort werden Meilensteine der Produktion Produktionsauftragsabhängig dokumentiert. Vor ein paar Wochen wurde entschieden, dass Mitarbeiter bzw. Aushilfskräfte auch bestimmte Arbeitsschritte Zuhause ausführen können. Damit auch diese Arbeitszeit bzw. Meilensteine dokumentiert werden, haben wir uns entschieden, das Web-Projekt dafür zu nutzen, um der Firma einen Prototyp zu entwickeln.
 Der Prototyp wurde unabhängig von der IT-Applikationslandschaft entwickelt, um eine Benotung und unabhängiges Verwenden der Anwendung zu ermöglichen. In der Zukunft wird das Projekt noch in die Applikationslandschaft integriert und erhält Schnittstellen zu den bestehenden Systemen, sodass die Datenbereitstellung für das Web-Portal automatisiert erfolgt.
 KERNFUNKTION DES PROJEKTS
