@@ -3,7 +3,7 @@ class SearchController < ApplicationController
   def searchForProductionOrders
 
     @production_orders = ProductionOrder.joins(:article)
-                             .where(['number = ? or articles.code = ?', params[:search], params[:search]])
+                             .where(['number = ? or articles.code = ?', params[:search].to_s, params[:search].to_s])
                              .select('production_orders.id,
                                       production_orders.number,
                                       production_orders.due_date,
@@ -15,14 +15,14 @@ class SearchController < ApplicationController
 
   def searchForArticles
 
-    @articles = Article.where('code LIKE :prefix or name LIKE :prefix', prefix: "#{params[:search]}%")
+    @articles = Article.where('code LIKE :prefix or name LIKE :prefix', prefix: "#{params[:search].to_s}%")
                        .select('id, code, name, version')
                        .limit(50)
   end
 
   def searchForWorkPlans
 
-    @work_plans = WorkPlan.where('name LIKE :prefix or description LIKE :prefix', prefix: "#{params[:search]}%")
+    @work_plans = WorkPlan.where('name LIKE :prefix or description LIKE :prefix', prefix: "#{params[:search].to_s}%")
                           .select('id, name, description')
                           .limit(50)
 

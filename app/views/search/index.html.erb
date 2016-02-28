@@ -67,7 +67,7 @@
         <tbody>
         <% @work_plans.each do |work_plan| %>
             <tr>
-              <td><%= link_to work_plan.name, work_plan_path(work_plan.id) %></td>
+              <td><%= link_to work_plan.name, edit_work_plan_path(work_plan.id) %></td>
               <td><%= work_plan.description %></td>
             </tr>
         <% end %>
