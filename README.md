@@ -68,8 +68,6 @@ einen Arbeitsplan, usw., welche zusätzlich durch einen Assistenten durchgeführ
     *   Um die bereits erledigten Buchungen einzusehen, kann der Nutzer auf den Link "Meine Produktionsbuchungen" klicken
 
 # Komponenten mit Version
-GEM
-* * remote:* https://rubygems.org/
 * * specs:
 * * * * actionmailer* (4.2.5)
 * * * * * * actionpack* (=* 4.2.5)
