@@ -31,3 +31,4 @@ de:
       destroyed: "%{model} wurde erfolgreich entfernt."
 
   signed_in: "Eingeloggt als"
+  sign_in: "Anmelden"
