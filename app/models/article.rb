@@ -9,7 +9,7 @@ class Article < ActiveRecord::Base
   validates :version, presence: true, uniqueness: {scope: [:code, :version]}
 
   def self.harnesses
-    joins(:article_group).where('article_groups.code LIKE ''?''', 500)
+    joins(:article_group).where('article_groups.code LIKE ''?''', '500')
   end
 
   def display_name
