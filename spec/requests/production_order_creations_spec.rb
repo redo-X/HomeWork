@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'spec_helper'
 
 RSpec.describe 'ProductionOrderCreations','as a registered "user"' do
-  let!(:user) {FactoryGirl.create(:user)}
+  let!(:user) {FactoryGirl.create(:user,:admin)}
   let!(:article) {FactoryGirl.create(:article)}
   let!(:customer) {FactoryGirl.create(:customer)}
   let!(:work_plan) {FactoryGirl.create(:work_plan)}
@@ -22,10 +22,11 @@ RSpec.describe 'ProductionOrderCreations','as a registered "user"' do
       fill_in 'production_order_number', :with => '1001'
       select article.name, :from =>'production_order_article_id'
       select customer.name1, :from =>'production_order_customer_id'
-      fill_in 'poduction_order_description', :with => 'Testbeschreibung... '
-      fill_in 'poduction_order_quantity', :with => '2'
+      fill_in 'production_order_description', :with => 'Testbeschreibung... '
+      fill_in 'production_order_quantity', :with => '2'
       select work_plan.name, :from =>'production_order_work_plan_id'
       click_button 'Erstellen'
+      page.html.should include('Produktionsauftrag wurde erfolgreich angelegt.')
     end
   end
 end

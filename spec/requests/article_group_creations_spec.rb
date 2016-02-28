@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'spec_helper'
 
 RSpec.describe 'ArticleGroupCreations','as a registered "user"' do
-  let!(:user) {FactoryGirl.create(:user)}
+  let!(:user) {FactoryGirl.create(:user, :admin)}
 
 
   context 'When logged out'do
@@ -19,6 +19,7 @@ RSpec.describe 'ArticleGroupCreations','as a registered "user"' do
       fill_in 'article_group_code', :with => '789'
       fill_in 'article_group_name', :with => 'Fahrzeuge'
       click_button 'Erstellen'
+      page.html.should include('Artikelgruppe wurde erfolgreich angelegt.')
     end
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'spec_helper'
 
 RSpec.describe 'ArticleCreations','as a registered "user"' do
-  let!(:user) {FactoryGirl.create(:user)}
+  let!(:user) {FactoryGirl.create(:user, :admin)}
   let!(:article_group) {FactoryGirl.create(:article_group)}
 
 
@@ -22,7 +22,7 @@ RSpec.describe 'ArticleCreations','as a registered "user"' do
       fill_in 'article_version', :with => '1.0'
       select article_group.display_name, :from =>'article_article_group_id'
       click_button 'Erstellen'
-      #page should have content
+      page.html.should include('Artikel wurde erfolgreich angelegt.')
     end
   end
 end

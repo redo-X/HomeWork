@@ -1,6 +1,6 @@
-<div class="panel panel-default">
-  <div class="panel-heading"><%="Favoriten".titleize %></div>
-
+<% if current_user.present? && current_user.has_role?(:admin) %>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= "Favoriten".titleize %></div>
       <table class="table">
         <thead>
         <tr>
@@ -20,18 +20,50 @@
               <td><%= production_order.article.display_name %></td>
               <td><%= production_order.quantity %></td>
               <td><%= production_order.pending_quantity %></td>
-              <td><%=l production_order.due_date %></td>
+              <td><%= l production_order.due_date %></td>
               <td><%= production_order.isCompleted %></td>
               <td>
                 <% if current_user %>
                     <%= link_to ("<span class=\"glyphicon glyphicon-star-empty\" ></span>").html_safe,
                                 favorite_production_order_path(production_order, type: "unfavorite"),
                                 method: :put,
-                                :class => 'btn btn-xs btn-warning'%>
+                                :class => 'btn btn-xs btn-warning' %>
                 <% end %>
               </td>
             </tr>
         <% end %>
         </tbody>
       </table>
+<% else %>
+    <%- model_class = ProductionRecord -%>
+    <div class="page-header">
+      <h1><%= "Meine Produktionsbuchungen".titleize %></h1>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th><%= model_class.human_attribute_name(:production_order) %></th>
+        <th><%= model_class.human_attribute_name(:production_work_step) %></th>
+        <th><%= model_class.human_attribute_name(:start) %></th>
+        <th><%= model_class.human_attribute_name(:finish) %></th>
+        <th><%= model_class.human_attribute_name(:duration_in_minutes) %></th>
+        <th><%= model_class.human_attribute_name(:quantity) %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @production_records.each do |production_record| %>
+          <tr>
+            <td><%= production_record.production_order.display_name_with_article %></td>
+            <td><%= production_record.production_work_step.name %></td>
+            <td><%= l production_record.start %></td>
+            <td><%= production_record.finish.presence ? l(production_record.finish) : ''  %></td>
+            <td><%= production_record.duration_in_minutes %></td>
+            <td><%= production_record.quantity %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+<% end %>
 </div>
