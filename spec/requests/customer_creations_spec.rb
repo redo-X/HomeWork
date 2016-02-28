@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'spec_helper'
 
 RSpec.describe 'CustomerCreations','as a registered "user"' do
-  let!(:user) {FactoryGirl.create(:user)}
+  let!(:user) {FactoryGirl.create(:user, :admin)}
 
 
   context 'When logged out'do
@@ -18,6 +18,7 @@ RSpec.describe 'CustomerCreations','as a registered "user"' do
       current_path.should eq(new_customer_path)
       fill_in 'customer_name1', :with => 'A AG'
       click_button 'Erstellen'
+      page.html.should include('Kunde wurde erfolgreich angelegt.')
     end
   end
 end

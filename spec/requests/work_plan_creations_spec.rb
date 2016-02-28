@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'spec_helper'
 
 RSpec.describe 'WorkPlanCreations','as a registered "user"' do
-  let!(:user) {FactoryGirl.create(:user)}
+  let!(:user) {FactoryGirl.create(:user, :admin)}
 
 
   context 'When logged out'do
@@ -18,6 +18,7 @@ RSpec.describe 'WorkPlanCreations','as a registered "user"' do
       current_path.should eq(new_work_plan_path)
       fill_in 'work_plan_name', :with => 'Reifenherstellung'
       click_button 'Erstellen'
+      page.html.should include('Arbeitsplan wurde erfolgreich angelegt.')
     end
   end
 end
