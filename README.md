@@ -20,9 +20,9 @@ einen Arbeitsplan, usw., welche zusätzlich durch einen Assistenten durchgeführ
 ### WICHTIG: Wir dürfen leider nicht die Dokumente öffentlich hochladen, weil wir verpflichtet sind, die Geheimhaltung der Kunden zu wahren.
 
 #USER-STORIES
-•	Backend und Frontend sollen durch eine Anmeldung getrennt werden
-•	Jeder Benutzer hat eine Rolle (Administrator oder Nutzer)
-•	Mitarbeiter der Verwaltung bekommen die Rolle Administrator und die ausführenden Kräfte die Rolle Nutzer zugewiesen
+*   Backend und Frontend sollen durch eine Anmeldung getrennt werden
+*   Jeder Benutzer hat eine Rolle (Administrator oder Nutzer)
+*   Mitarbeiter der Verwaltung bekommen die Rolle Administrator und die ausführenden Kräfte die Rolle Nutzer zugewiesen
 
 
 ##FRONTEND
