@@ -147,6 +147,7 @@
           <thead>
           <tr>
             <th><%= ProductionRecord.human_attribute_name(:production_work_step) %></th>
+            <th><%= ProductionRecord.human_attribute_name(:user) %></th>
             <th><%= ProductionRecord.human_attribute_name(:start) %></th>
             <th><%= ProductionRecord.human_attribute_name(:finish) %></th>
             <th><%= ProductionRecord.human_attribute_name(:is_finished) %></th>
@@ -158,6 +159,7 @@
           <% @production_order.production_records.each do |production_record| %>
               <tr>
                 <td><%= production_record.production_work_step.name %></td>
+                <td><%= production_record.user.display_name %></td>
                 <td><%= l production_record.start %></td>
                 <td><%= l production_record.finish.presence || Time.now %></td>
                 <td><%= production_record.is_finished ? 'Ja' : 'Nein' %></td>

@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
     ProductionRecord.where("user_id = ? AND finish IS NULL", id).count() > 0
   end
 
+  def display_name
+    "#{first_name} #{last_name}"
+  end
+
   # dm: Der Benutzer soll nur einer Rolle zugeordnet werden
   def role
     roles.first

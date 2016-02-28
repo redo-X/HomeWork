@@ -36,10 +36,11 @@ user4 = User.create email: 'mitarbeiter@system.de',
                     password_confirmation: pass
 
 admin.add_role :admin
-user2.add_role :admin
-user3.add_role :admin
+
 
 user1.add_role :user
+user2.add_role :user
+user3.add_role :user
 user4.add_role :user
 
 puts "Admin password is #{pass}"
@@ -245,4 +246,114 @@ po1.set_work_plan(firstPieceWorkPlan)
 po2.set_work_plan(standardWorkPlan)
 po3.set_work_plan(standardWorkPlan)
 
+#
+# TESTBUCHUNGEN FÜR PO1
+#
+ProductionRecord.create start: DateTime.parse("22.02.2016 08:00:00"),
+                        finish: DateTime.parse("22.02.2016 09:30:00"),
+                        quantity: 1,
+                        production_order: po1,
+                        production_work_step: po1.production_work_steps.first,
+                        user: user2
+ProductionRecord.create start: DateTime.parse("22.02.2016 09:35:00"),
+                        finish: DateTime.parse("22.02.2016 11:30:00"),
+                        quantity: 1,
+                        production_order: po1,
+                        production_work_step: po1.production_work_steps.second,
+                        user: user3
+ProductionRecord.create start: DateTime.parse("22.02.2016 12:00:00"),
+                        finish: DateTime.parse("22.02.2016 14:00:00"),
+                        quantity: 1,
+                        production_order: po1,
+                        production_work_step: po1.production_work_steps.third,
+                        user: user2
 
+#
+# TESTBUCHUNGEN FÜR PO2
+#
+ProductionRecord.create start: DateTime.parse("22.02.2016 08:00:00"),
+                        finish: DateTime.parse("22.02.2016 09:30:00"),
+                        quantity: 20,
+                        production_order: po2,
+                        production_work_step: po2.production_work_steps.first,
+                        user: user2
+ProductionRecord.create start: DateTime.parse("22.02.2016 08:00:00"),
+                        finish: DateTime.parse("22.02.2016 08:30:00"),
+                        quantity: 5,
+                        production_order: po2,
+                        production_work_step: po2.production_work_steps.first,
+                        user: user3
+ProductionRecord.create start: DateTime.parse("22.02.2016 09:35:00"),
+                        finish: DateTime.parse("22.02.2016 11:30:00"),
+                        quantity: 25,
+                        production_order: po2,
+                        production_work_step: po2.production_work_steps.second,
+                        user: user3
+ProductionRecord.create start: DateTime.parse("22.02.2016 12:00:00"),
+                        finish: DateTime.parse("22.02.2016 14:00:00"),
+                        quantity: 10,
+                        production_order: po2,
+                        production_work_step: po2.production_work_steps.third,
+                        user: user2
+ProductionRecord.create start: DateTime.parse("22.02.2016 12:00:00"),
+                        finish: DateTime.parse("22.02.2016 14:00:00"),
+                        quantity: 10,
+                        production_order: po2,
+                        production_work_step: po2.production_work_steps.third,
+                        user: user2
+ProductionRecord.create start: DateTime.parse("22.02.2016 14:00:00"),
+                        finish: DateTime.parse("22.02.2016 15:00:00"),
+                        quantity: 5,
+                        production_order: po2,
+                        production_work_step: po2.production_work_steps.third,
+                        user: user3
+
+
+#
+# TESTBUCHUNGEN FÜR PO3
+#
+ProductionRecord.create start: DateTime.parse("22.02.2016 08:00:00"),
+                        finish: DateTime.parse("22.02.2016 12:00:00"),
+                        quantity: 25,
+                        production_order: po3,
+                        production_work_step: po3.production_work_steps.first,
+                        user: user2
+ProductionRecord.create start: DateTime.parse("22.02.2016 08:00:00"),
+                        finish: DateTime.parse("22.02.2016 12:30:00"),
+                        quantity: 25,
+                        production_order: po3,
+                        production_work_step: po3.production_work_steps.first,
+                        user: user3
+
+ProductionRecord.create start: DateTime.parse("23.02.2016 09:35:00"),
+                        finish: DateTime.parse("23.02.2016 11:30:00"),
+                        quantity: 50,
+                        production_order: po3,
+                        production_work_step: po3.production_work_steps.second,
+                        user: user3
+
+ProductionRecord.create start: DateTime.parse("24.02.2016 12:00:00"),
+                        finish: DateTime.parse("24.02.2016 14:00:00"),
+                        quantity: 20,
+                        production_order: po3,
+                        production_work_step: po3.production_work_steps.third,
+                        user: user2
+ProductionRecord.create start: DateTime.parse("24.02.2016 12:00:00"),
+                        finish: DateTime.parse("24.02.2016 14:00:00"),
+                        quantity: 20,
+                        production_order: po3,
+                        production_work_step: po3.production_work_steps.third,
+                        user: user3
+ProductionRecord.create start: DateTime.parse("24.02.2016 14:15:00"),
+                        finish: DateTime.parse("24.02.2016 15:00:00"),
+                        quantity: 10,
+                        production_order: po3,
+                        production_work_step: po3.production_work_steps.third,
+                        user: user3
+
+
+#
+# FAVORISIERUNG
+#
+FavoriteProductionOrder.create user: admin, production_order: po2
+FavoriteProductionOrder.create user: admin, production_order: po3

@@ -1,5 +1,4 @@
 class SearchController < ApplicationController
-
   def searchForProductionOrders
 
     @production_orders = ProductionOrder.joins(:article)
