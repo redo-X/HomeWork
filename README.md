@@ -33,7 +33,7 @@ FRONTEND
 *   Der Mitarbeiter soll sich von Zuhause aus mit vorgegebenen Anmeldeinformationen in das Web-Portal anmelden können
 *   Der Mitarbeiter soll seine Produktionsbuchungen sich ansehen können
 *   Der Mitarbeiter soll in der Lage sein, seine Arbeitszeit möglichst einfach im Portal erfassen zu können
-*   Eine weitere Erleichterung soll sein, dass eine Start-Buchung und eine Ende-Buchung erfolgt, sodass der Mitarbeiter nicht selber etwas aufschreiben muss
+    *   Eine weitere Erleichterung soll sein, dass eine Start-Buchung und eine Ende-Buchung erfolgt, sodass der Mitarbeiter nicht selber etwas aufschreiben muss
 
 
 BACKEND
